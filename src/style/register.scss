@@ -1,0 +1,218 @@
+/* Global styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; // Empêche le scroll horizontal
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Conteneur principal */
+.register-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  max-width: 1349px;
+  margin: 0 auto; // Centrage horizontal
+  background-color: #f8f9fa;
+
+  .left-section {
+    flex: 1;
+    color: #fff;
+    background-color: #015499;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+    width: 50%;
+    overflow: hidden;
+    text-align: center;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.3;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        line-height: 1.5;
+      }
+
+      p {
+        font-size: 1rem;
+        margin-bottom: 15px;
+      }
+
+      .login-link {
+        color: #f8f9fa;
+        text-decoration: underline;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .right-section {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .underline {
+      width: 80px;
+      height: 4px;
+      background-color: #015499;
+      margin-bottom: 20px;
+    }
+
+    .register-form {
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+
+      .form-group {
+        margin-bottom: 15px;
+        position: relative;
+
+        .form-control {
+          width: 100%;
+          padding: 12px 15px;
+          border: 1px solid #ced4da;
+          border-radius: 5px;
+          font-size: 1rem;
+          transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+          &:focus {
+            outline: none;
+            border-color: #015499;
+            box-shadow: 0 0 5px rgba(1, 84, 153, 0.5);
+          }
+        }
+
+        .error-border {
+          border: 1px solid red;
+        }
+
+        .error-message {
+          color: red;
+          font-size: 0.9rem;
+          margin-top: 5px;
+          position: absolute;
+          left: 5px;
+          animation: fadeIn 0.3s ease-in-out;
+        }
+      }
+
+      button {
+        padding: 12px 20px;
+        background-color: #015499;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #004099;
+        }
+      }
+    }
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 730px) {
+  .register-container {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+
+    .left-section {
+      height: 70%;
+      width: 100%;
+
+      .content {
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        .text-none {
+          display: none;
+        }
+      }
+    }
+
+    .right-section {
+      width: 100%;
+      padding: 10px;
+    }
+  }
+}
+
+@media (max-width: 250px) {
+  .register-container {
+    display: block;
+    padding: 0;
+    width: 100%;
+    height: auto;
+
+    .left-section {
+      height: 70%;
+
+      .content {
+        h1 {
+          font-size: 1.2rem;
+          font-weight: 600;
+        }
+
+        .text-none {
+          display: none;
+        }
+
+        p {
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .right-section {
+      padding: 10px;
+    }
+  }
+}
+
+/* Animation d'apparition des messages d'erreur */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

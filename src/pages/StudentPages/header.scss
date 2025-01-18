@@ -1,0 +1,38 @@
+.header {
+    display: flex;
+    align-items: center;
+    background-color: #013a63e1;
+    padding: 75px 40% 5px 40%;
+    border-radius: 10px;
+    height: 50vh;
+
+    .user-info {
+        color: white;
+        height: 100%;
+        text-align: center;
+
+
+        .profile-picture {
+            height: 150px;
+            width: 150px;
+            border: 2px solid white;
+            border-radius: 50%;
+        }
+
+        .welcome-text {
+            h2 {
+                margin: 0;
+                font-size: 1.5rem;
+            }
+
+            p {
+                margin: 0;
+                font-size: 1rem;
+            }
+
+            span {
+                font-size: 0.9rem;
+            }
+        }
+    }
+}

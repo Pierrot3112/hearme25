@@ -1,0 +1,41 @@
+{
+    "users": [
+        { "id": 125, "name": "Lorem ipsum dolor sit amet,", "date": "27 Apr", "points": 219, "level": "Intermédiaire" },
+        { "id": 126, "name": "Cras quis nulla commodo,", "date": "22 Mar", "points": 652, "level": "Avancé" },
+        { "id": 127, "name": "Curabitur lobortis id lorem id", "date": "15 Feb", "points": 245, "level": "Intermédiaire" },
+        { "id": 128, "name": "Curabitur lobortis id lorem id", "date": "10 Jan", "points": 527, "level": "Avancé" },
+        { "id": 129, "name": "Lorem ipsum dolor sit amet,", "date": "5 Dec", "points": 648, "level": "Avancé" },
+        { "id": 130, "name": "Lorem ipsum dolor sit amet,", "date": "30 Oct", "points": 27, "level": "Débutant" },
+        { "id": 131, "name": "Fusce vehicula dolor arcu, sit", "date": "24 Sep", "points": 64, "level": "Débutant" },
+        { "id": 132, "name": "In hac habitasse platea", "date": "19 Aug", "points": 130, "level": "Débutant" },
+        { "id": 133, "name": "Nam porttitor blandit", "date": "14 Jul", "points": 521, "level": "Avancé" },
+        { "id": 134, "name": "Ut id consectetur magna.", "date": "8 Jun", "points": 938, "level": "Avancé" }
+    ],
+    "data": {
+      "title": {
+        "1": "Formation ajoutées",
+        "2": "Evaluations et Exercices",
+        "3": "Certificats ajoutés",
+        "4": "Abonnements Gratuits",
+        "5": "Abonnements Basic",
+        "6": "Abonnements Premium"
+      },
+      "values": {
+        "1": "1,406",
+        "2": "16,634",
+        "3": "4,534",
+        "4": "506",
+        "5": "12,534",
+        "6": "4,184"
+      },
+      "chartData": [
+        { "month": "Jan", "users": 100 },
+        { "month": "Feb", "users": 200 },
+        { "month": "Mar", "users": 300 },
+        { "month": "Apr", "users": 400 },
+        { "month": "May", "users": 600 },
+        { "month": "Jun", "users": 700 }
+      ]
+    }
+  }
+  

@@ -1,0 +1,84 @@
+$primary-blue: #1DA1F2;
+$white: #F3F3F3;
+$light-gray: #F5F5F5;
+$bg-white: #FFFFFF;
+$text-dark: #2C3749;
+$bg-blue: #015499;
+$text-light: #555555;
+$box-shadow: rgba(0, 0, 0, 0.1);
+$black-text: #0D0D0D;
+
+.hero-home {
+    background-color: $bg-blue;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; // Added for centering content horizontally
+    position: relative;
+    height: 100vh;
+    overflow: hidden; // Ensures no overflow due to video or content
+
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 30%; // Fixed opacity syntax
+        // z-index: -1; // Ensures video stays in the background
+    }
+
+    .section {
+        text-align: center;
+        max-width: 1200px; // Limits the section width for better readability
+        padding: 0 20px; // Adds some padding for smaller screens
+
+        h1 {
+            font-family: 'Mongolian Baiti', sans-serif;
+            font-size: 4rem; // Adjusted for better scaling
+            line-height: 1.2;
+            margin-bottom: 20px;
+
+            span {
+                color: $black-text;
+            }
+        }
+
+        .description {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 1.2rem; // Adjusted for readability
+            color: $light-gray;
+            margin: 0 auto; // Centers the description block
+            max-width: 800px; // Restricts width for better readability
+        }
+
+        .btn-box {
+            margin: 20px auto; // Centers the button
+            background-color: $bg-white;
+            width: fit-content; // Adapts to button content size
+            padding: 10px 20px;
+            border-radius: 5px; // Adds a subtle roundness
+            box-shadow: 0 4px 6px $box-shadow; // Adds subtle shadow for depth
+
+            a {
+                text-decoration: none;
+                color: $text-dark;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: bold;
+                font-size: 1rem;
+            }
+
+            &:hover {
+                background-color: $primary-blue;
+                color: $white;
+
+                a {
+                    color: $white; // Updates text color on hover
+                }
+            }
+        }
+    }
+}

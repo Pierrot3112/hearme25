@@ -1,0 +1,167 @@
+// Variables pour personnalisation
+$primary-color: #333;
+$secondary-color: #555;
+$light-gray: #ddd;
+$dark-gray: #666;
+$background-color: #fff;
+$hover-shadow: rgba(0, 0, 0, 0.2);
+$transition-duration: 0.3s;
+$primary-blue: #1DA1F2;
+
+// Container principal
+.formations-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: $secondary-color;
+  }
+}
+
+// Grille des formations
+.formations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+// Carte
+.formation-card {
+  background: $background-color;
+  border: 1px solid $light-gray;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform $transition-duration ease, box-shadow $transition-duration ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px $hover-shadow;
+  }
+
+  // Image de la carte
+  .card-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-bottom: 1px solid $light-gray;
+  }
+
+  // Contenu de la carte
+  .card-content {
+    padding: 15px;
+    text-align: left;
+
+    .card-title {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: $primary-color;
+    }
+
+    .card-description {
+      font-size: 1rem;
+      margin-bottom: 15px;
+      color: $dark-gray;
+    }
+
+    // Pied de la carte
+    .card-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: $secondary-color;
+
+      .author-image {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 10px;
+      }
+
+      
+      .card-status {
+        font-size: 0.9rem;
+        color: $secondary-color;
+
+    }
+    .status-payant {
+        color: $primary-blue;
+    }
+    }
+  }
+}
+
+.cours-selected {
+  .detail-courses {
+    width: 1024x;
+    padding-top: 50px;
+    h1 {
+        font-size: 28px;
+    }
+  
+    .level-modul {
+        padding-top: 5px;
+        color: #04a2fd;
+    }
+  
+    .content-course {
+      display: flex;
+  
+      .video {
+        width: 45%;
+        video{
+          height: 45%;
+          border-radius: 10px;
+        }
+      }
+  
+      .description-cd {
+        width: 35%;
+
+        .teacher {
+          display: flex;
+          justify-content: space-between;
+          font-weight: bold;
+  
+          div {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+
+            .teacher-image {
+              height: 35px;
+              border-radius: 50%; 
+            }
+          }
+        }
+
+        p {
+          padding-top: 20px;
+        }
+
+        .btn {
+          width: 100%;
+          margin: 5px;
+          color: $background-color;
+          background: #013a63;
+        }
+      }
+    }
+  }
+}
