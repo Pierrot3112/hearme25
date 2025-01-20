@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Home, ExpandMore, ChevronRight } from "@mui/icons-material";
+import { Home,School, Subscriptions, Verified, AccountCircle,Assessment, Category, People, ExpandMore, ChevronRight } from "@mui/icons-material";
 import './Admin.scss';
 
 const SidebarAdmin = ({ onMenuClick }) => {
@@ -31,14 +31,14 @@ const SidebarAdmin = ({ onMenuClick }) => {
             className={activeMenu === "user" ? "active" : ""}
             onClick={() => handleMenuClick("user")}
           >
-            <Home className='icon' />
+            <People className='icon' />
             <p className="list-menu">Utilisateurs</p>
           </li>
           <li
             className={activeMenu === "categorie" ? "active" : ""}
             onClick={() => handleMenuClick("categorie")}
           >
-            <Home className='icon' />
+            <Category className='icon' />
             <p className="list-menu">Catégories</p>
           </li>
           {/* Menu Formation avec sous-menus */}
@@ -46,7 +46,7 @@ const SidebarAdmin = ({ onMenuClick }) => {
             className={activeMenu === "course" ? "active" : ""}
             onClick={toggleCourseMenu}
           >
-            <Home className='icon' />
+            <School className='icon' />
             <p className="list-menu">Formations</p>
             {expandCourse ? <ExpandMore className="expand-icon" /> : <ChevronRight className="expand-icon" />}
           </li>
@@ -70,29 +70,32 @@ const SidebarAdmin = ({ onMenuClick }) => {
             className={activeMenu === "evaluation" ? "active" : ""}
             onClick={() => handleMenuClick("evaluation")}
           >
-            <Home className='icon' />
+            <Assessment className='icon' />
             <p className="list-menu">Évaluations</p>
+            {expandCourse ? <ExpandMore className="expand-icon" /> : <ChevronRight className="expand-icon" />}
           </li>
           <li
             className={activeMenu === "certification" ? "active" : ""}
             onClick={() => handleMenuClick("certification")}
           >
-            <Home className='icon' />
+            <Verified className='icon' />
             <p className="list-menu">Certifications</p>
+            {expandCourse ? <ExpandMore className="expand-icon" /> : <ChevronRight className="expand-icon" />}
           </li>
           <li
             className={activeMenu === "abonnement" ? "active" : ""}
             onClick={() => handleMenuClick("abonnement")}
           >
-            <Home className='icon' />
+            <Subscriptions className='icon' />
             <p className="list-menu">Abonnements</p>
           </li>
           <li
             className={activeMenu === "account" ? "active" : ""}
             onClick={() => handleMenuClick("account")}
           >
-            <Home className='icon' />
+            <AccountCircle className='icon' />
             <p className="list-menu">Compte</p>
+            {expandCourse ? <ExpandMore className="expand-icon" /> : <ChevronRight className="expand-icon" />}
           </li>
         </ul>
       </nav>
