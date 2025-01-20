@@ -1,13 +1,15 @@
 import React from 'react';
 import HomeAdmin from './HomeAdmin';
 import Category from './Category';
-import Formation from './Formation';
+import Formation from './AllCourses';
 import Evaluation from './Evaluation';
 import Certification from './Certification';
 import Abonment from './Abonment';
 import Compte from './Compte';
 import HeaderAdmin from './HeaderAdmin';
 import UsersTable from './UsersTable';
+import AjouterFormation from './AjoutFormation';
+import AllCourses from './AllCourses';
 
 const ContentAdmin = ({ activeMenu }) => {
     let content;
@@ -22,8 +24,11 @@ const ContentAdmin = ({ activeMenu }) => {
         case "categorie":
             content = <Category />;
             break;
-        case "course":
-            content = <Formation />;
+        case "addCourse":
+            content = <AjouterFormation />;
+            break;
+        case "allCourses":
+            content = <AllCourses />;
             break;
         case "evaluation":
             content = <Evaluation />;

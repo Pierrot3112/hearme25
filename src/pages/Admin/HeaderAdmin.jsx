@@ -1,14 +1,16 @@
 import React from 'react';
-import './Admin.scss'
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 
 const HeaderAdmin = () => {
   return (
-    <header className="header-admin">
+    <nav className="header-admin">
+      <ExpandMoreOutlinedIcon className="icon-expand" />
       <span>Admin</span>
       <div className="profile">
-        aa
+        <AccountCircleOutlinedIcon className="icon-black" />
       </div>
-    </header>
+    </nav>
   );
 };
 
