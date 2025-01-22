@@ -17,7 +17,7 @@ const EvaluationDetail = ({ evaluation }) => {
       setIsLoading(false); // Hide the loading component after 5 seconds
       setShowTestContent(true); // Show the test interface
       console.log('Test content shown:', showTestContent);
-    }, 100000);
+    }, 3000);
   };
 
   const handleCloseModal = () => {
