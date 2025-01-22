@@ -14,11 +14,11 @@ $black-text: #0D0D0D;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; // Added for centering content horizontally
+    align-items: center;
     position: relative;
     height: 100vh;
-    overflow: hidden; // Ensures no overflow due to video or content
-
+    overflow: hidden; 
+    
     img {
         height: 100%;
         width: 100%;
@@ -26,18 +26,17 @@ $black-text: #0D0D0D;
         position: absolute;
         top: 0;
         left: 0;
-        opacity: 30%; // Fixed opacity syntax
-        // z-index: -1; // Ensures video stays in the background
+        opacity: 30%; 
     }
 
     .section {
         text-align: center;
-        max-width: 1200px; // Limits the section width for better readability
-        padding: 0 20px; // Adds some padding for smaller screens
+        max-width: 1200px; 
+        padding: 0 20px; 
 
         h1 {
             font-family: 'Mongolian Baiti', sans-serif;
-            font-size: 4rem; // Adjusted for better scaling
+            font-size: 4rem; 
             line-height: 1.2;
             margin-bottom: 20px;
 
@@ -49,19 +48,19 @@ $black-text: #0D0D0D;
         .description {
             font-family: 'Montserrat', sans-serif;
             font-weight: 500;
-            font-size: 1.2rem; // Adjusted for readability
+            font-size: 1.2rem; 
             color: $light-gray;
-            margin: 0 auto; // Centers the description block
-            max-width: 800px; // Restricts width for better readability
+            margin: 0 auto;
+            max-width: 800px; 
         }
 
         .btn-box {
-            margin: 20px auto; // Centers the button
+            margin: 20px auto; 
             background-color: $bg-white;
-            width: fit-content; // Adapts to button content size
+            width: fit-content; 
             padding: 10px 20px;
-            border-radius: 5px; // Adds a subtle roundness
-            box-shadow: 0 4px 6px $box-shadow; // Adds subtle shadow for depth
+            border-radius: 5px; 
+            box-shadow: 0 4px 6px $box-shadow; 
 
             a {
                 text-decoration: none;
@@ -76,7 +75,7 @@ $black-text: #0D0D0D;
                 color: $white;
 
                 a {
-                    color: $white; // Updates text color on hover
+                    color: $white; 
                 }
             }
         }

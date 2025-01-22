@@ -73,7 +73,10 @@ const AjouterFormation = () => {
           </div>
             <div className="upload-video">
                 <label htmlFor="video" className="upload-icon">
+                  <div>
                     <Add className="icon" />
+                    <p className="upload-text">Ajouter la formation en video</p>
+                  </div>
                 </label>
                 <input
                     type="file"

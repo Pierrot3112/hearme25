@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Box, Typography, Button, Grid, Paper, Chip } from "@mui/material";
 import { Agriculture, Campaign, Brush, Devices } from "@mui/icons-material"; // Updated icon for Marketing
 import Head from "./Head";
+import EvaluationDetail from "./EvaluationDetails"; // Import the new component
 
 // Evaluations data
 const evaluations = [
@@ -46,99 +46,98 @@ const Evaluation = () => {
   };
 
   return (
-    <Box sx={{ padding: 1 }}>
+    <div style={{ padding: "16px" }}>
       <Head />
 
       {/* Section Header */}
-      <Box mb={3}>
-        <Typography variant="h4" fontWeight="bold">
-          Evaluations
-        </Typography>
-        <Typography variant="body1" color="text.secondary" paragraph>
-          Découvrez votre niveau de compétence et recevez des recommandations
-          d'apprentissage personnalisées.
-        </Typography>
-        <Box display="flex" gap={2} mb={2}>
-          <Button variant="contained" color="primary">
-            Débutant
-          </Button>
-          <Button variant="outlined" color="primary">
-            Intermédiaire
-          </Button>
-          <Button variant="outlined" color="primary">
-            Avancé
-          </Button>
-        </Box>
-      </Box>
-
-      <hr />
-
-      {/* Display selected evaluation content */}
-      {selectedEvaluation ? (
-        <Box>
-          <Typography variant="h5" fontWeight="bold" gutterBottom>
-            {selectedEvaluation.title}
-          </Typography>
-          <Typography variant="body1">{selectedEvaluation.description}</Typography>
-          {selectedEvaluation.status && (
-            <Chip
-              label={selectedEvaluation.status}
-              color="primary"
-              size="small"
-              sx={{
-                marginTop: 2,
-                fontWeight: "bold",
+      {!selectedEvaluation && (
+        <div style={{ marginBottom: "24px" }}>
+          <h1 style={{ fontWeight: "bold" }}>Evaluations</h1>
+          <p style={{ color: "gray", marginBottom: "16px" }}>
+            Découvrez votre niveau de compétence et recevez des recommandations
+            d'apprentissage personnalisées.
+          </p>
+          <div style={{ display: "flex", gap: "16px", marginBottom: "16px" }}>
+            <button
+              style={{
+                padding: "8px 16px",
+                backgroundColor: "#1976d2",
+                color: "#fff",
+                border: "none",
+                borderRadius: "4px",
               }}
-            />
-          )}
-        </Box>
+            >
+              Débutant
+            </button>
+            <button
+              style={{
+                padding: "8px 16px",
+              }}
+            >
+              Intermédiaire
+            </button>
+            <button
+              style={{
+                padding: "8px 16px",
+              }}
+            >
+              Avancé
+            </button>
+            <hr />
+          </div>
+        </div>
+      )}
+
+
+      {/* Conditional rendering of either the Evaluation list or the selected evaluation detail */}
+      {selectedEvaluation ? (
+        // Render EvaluationDetail component when an evaluation is clicked
+        <EvaluationDetail evaluation={selectedEvaluation} />
       ) : (
         // List of evaluations with icons
-        <Grid container spacing={3}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "24px" }}>
           {evaluations.map((evaluation) => (
-            <Grid item xs={12} md={6} key={evaluation.id}>
-              <Paper
-                elevation={3}
-                sx={{
-                  padding: 3,
-                  borderRadius: 2,
-                  position: "relative",
-                  height: "100%",
-                  cursor: "pointer",
-                  "&:hover": {
-                    boxShadow: 3,
-                  },
-                }}
-                onClick={() => handleClick(evaluation)} // On click, show details
-              >
-                <Box display="flex" alignItems="center" gap={2}>
-                  {evaluation.icon}
-                  <Typography variant="h6" fontWeight="bold" gutterBottom>
-                    {evaluation.title}
-                  </Typography>
-                </Box>
-                <Typography variant="body2" color="text.secondary">
-                  {evaluation.description}
-                </Typography>
-                {evaluation.status && (
-                  <Chip
-                    label={evaluation.status}
-                    color="primary"
-                    size="small"
-                    sx={{
-                      position: "absolute",
-                      top: 10,
-                      right: 10,
-                      fontWeight: "bold",
-                    }}
-                  />
-                )}
-              </Paper>
-            </Grid>
+            <div
+              key={evaluation.id}
+              style={{
+                width: "48%",
+                padding: "24px",
+                borderRadius: "8px",
+                position: "relative",
+                cursor: "pointer",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                transition: "box-shadow 0.3s",
+              }}
+              onClick={() => handleClick(evaluation)} // On click, show details
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                {evaluation.icon}
+                <h3 style={{ fontWeight: "bold", marginBottom: "8px" }}>
+                  {evaluation.title}
+                </h3>
+              </div>
+              <p style={{ color: "gray" }}>{evaluation.description}</p>
+              {evaluation.status && (
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "10px",
+                    right: "10px",
+                    padding: "4px 8px",
+                    backgroundColor: "#1976d2",
+                    color: "#fff",
+                    borderRadius: "4px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {evaluation.status}
+                </div>
+              )}
+            </div>
           ))}
-        </Grid>
+        </div>
       )}
-    </Box>
+    </div>
   );
 };
 

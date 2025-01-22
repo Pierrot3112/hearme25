@@ -7,6 +7,7 @@ const Head = () => {
   return (
     <div className="head">
       <SearchBar />
+      <h1>HEARME</h1>
       <Notification />
     </div>
   );
