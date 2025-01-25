@@ -5,7 +5,7 @@ $bg-white: #FFFFFF;
 $text-dark: #2C3749;
 $bg-blue: #015499;
 $text-light: #555555;
-$box-shadow: rgba(0, 0, 0, 0.1);
+$box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); // Correction : définition complète de l'ombre
 $black-text: #0D0D0D;
 
 .hero-home {
@@ -17,168 +17,257 @@ $black-text: #0D0D0D;
   align-items: center;
   position: relative;
   height: 100vh;
-  overflow: hidden;
 
-  video, img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0.3; // Syntaxe correcte pour l'opacité
+  .video-home,
+  video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.3;
   }
 
   .section {
-      text-align: center;
-      max-width: 1200px;
-      padding: 0 20px;
+    text-align: center;
+    max-width: 1200px;
+    padding: 0 20px;
 
+    h1 {
+      font-family: 'Mongolian Baiti', sans-serif;
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 20px;
+
+      span {
+        color: $black-text;
+      }
+    }
+
+    .description {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 1.2rem;
+      color: $light-gray;
+      margin: 0 auto;
+      max-width: 800px;
+    }
+
+    .btn-box {
+      margin: 20px auto;
+      background-color: $bg-white;
+      color: $black-text;
+      width: fit-content;
+      padding: 10px 20px;
+      border-radius: 5px;
+      box-shadow: $box-shadow;
+
+      &:hover {
+        background-color: $primary-blue;
+        color: $white;
+      }
+    }
+  }
+
+  // Ajustements responsives
+  @media (max-width: 768px) {
+    height: 50vh; // Ajustement pour mobile : moitié de la hauteur de l'écran
+    width: 100vw;
+
+    .video-home {
+      video {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .section {
+      margin-top: 5%;
       h1 {
-          font-family: 'Mongolian Baiti', sans-serif;
-          font-size: 3rem; // Taille par défaut
-          line-height: 1.2;
-          margin-bottom: 20px;
-
-          span {
-              color: $black-text;
-          }
+        font-size: 1.5rem;
       }
 
       .description {
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 500;
-          font-size: 1.2rem;
-          color: $light-gray;
-          margin: 0 auto;
-          max-width: 800px;
+        font-size: 0.7rem;
       }
 
       .btn-box {
-          margin: 20px auto;
-          background-color: $bg-white;
-          color: $black-text;
-          width: fit-content;
-          padding: 10px 20px;
-          border-radius: 5px;
-          box-shadow: 0 4px 6px $box-shadow;
-
-          &:hover {
-              background-color: $primary-blue;
-              color: $white;
-          }
+        padding: 5px 14px;
       }
+    }
   }
-
-  
 }
 
 
 .partenaires {
-    display: flex;
-    justify-content: center;
-    gap: 10rem;
-    margin: 2rem;
-    padding-top: 50px;
-  
+  display: flex;
+  justify-content: center;
+  gap: 10rem;
+  margin: 2rem;
+  padding-top: 50px;
+
+  img {
+    height: 200px;
+    object-fit: contain;
+  }
+
+  @media (max-width: 1200px) {
+    gap: 5rem; 
+
     img {
-      height:200px;
-      object-fit: contain;
+      height: 150px; 
     }
   }
 
-  .temoignages {
-    padding: 100px 0;
-    text-align: center;
-    margin: 2rem;
+  @media (max-width: 768px) {
+    gap: 2rem; 
+
+    img {
+      height: 150px; 
+    }
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    img {
+      height: 150px; 
+  }
+}
+}
+
+.temoignages {
+  padding: 100px 0;
+  text-align: center;
+  margin: 2rem;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .testimonial-slider {
+    display: flex;
+    overflow: hidden; // Cache les éléments en dehors de la vue
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto; // Centrer le slider
+  }
+
+  .testimonial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-width: 100%; // Chaque témoignage prend toute la largeur du slider
+    line-height: 1.5;
   
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
+    .image-testimonial {
+      height: 150px;
+      width: 150px;
+      border: 3px solid $primary-blue;
+      border-radius: 50%;
+      margin-right: 5rem; // Espace entre l'image et la description
+      flex-shrink: 0; // Empêche l'image de se réduire
     }
   
-    .testimonial-slider {
-      display: flex;
-      overflow: hidden; /* Cache les éléments en dehors de la vue */
+    .description-testimonial {
       position: relative;
-      max-width: 900px;
-      margin: 0 auto; /* Centrer le slider */
+  
+      .testimonial-icon {
+        position: absolute;
+        font-size: 4rem;
+        color: $primary-blue;
+  
+        &.left {
+          top: -30px;
+          left: -40px;
+        }
+  
+        &.right {
+          bottom: 11px;
+          right: -7px;
+        }
+      }
+  
+      .quotes {
+        font-weight: bold;
+        font-style: italic;
+      }
     }
   
-    .testimonial {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      min-width: 100%; /* Chaque témoignage prend toute la largeur du slider */
-      line-height: 1.5;
+    @media (max-width: 1200px) {
+      .image-testimonial {
+        height: 120px;
+        width: 120px;
+        margin-right: 3rem; // Réduction de l'espace entre l'image et la description
+      }
+  
+      .description-testimonial .testimonial-icon {
+        font-size: 3rem; // Réduction de la taille des icônes
+      }
+    }
+  
+    @media (max-width: 768px) {
+      flex-direction: column; // Empilement des éléments en colonne
+      text-align: center;
   
       .image-testimonial {
-        height: 150px;
-        width: 150px;
-        border: 3px solid #48a2ff;
-        border-radius: 50%;
-        margin-right: 5rem; /* Espace entre l'image et la description */
-        flex-shrink: 0; /* Empêche l'image de se réduire */
+        margin-right: 0;
+        margin-bottom: 1rem; // Ajout d'un espace en bas de l'image
       }
   
-      .description-testimonial {
-        position: relative;
+      .description-testimonial .testimonial-icon {
+        display: none; // Suppression des icônes pour les petits écrans
+      }
   
-        .testimonial-icon {
-          position: absolute;
-          font-size: 4rem;
-          color: #48a2ff;
-  
-          &.left {
-            position: absolute;
-            top: -30px;
-            left: -40px;
-          }
-  
-          &.right {
-            bottom: 11px;
-            right: -4px;
-          }
-        }
-  
-        .quotes {
-          font-weight: bold;
-          font-style: italic;
-        }
+      .quotes {
+        font-size: 1rem; // Ajustement de la taille de la citation
       }
     }
   
-    .testimonial-footer {
-      margin-top: 1rem;
-  
-      strong {
-        display: block;
-        font-size: 1.2rem;
+    @media (max-width: 480px) {
+      .image-testimonial {
+        height: 100px;
+        width: 100px;
       }
   
-      span {
-        font-size: 0.9rem;
-        color: #777;
-      }
-    }
-  
-    .dots {
-      margin-top: 1rem;
-  
-      .dot {
-        height: 10px;
-        width: 10px;
-        background-color: #ccc;
-        border-radius: 50%;
-        display: inline-block;
-        margin: 0 5px;
-        cursor: pointer;
-  
-        &.active {
-          background-color: #48a2ff;
-        }
+      .quotes {
+        font-size: 0.9rem; // Réduction supplémentaire de la taille de la citation
       }
     }
   }
   
+
+  .testimonial-footer {
+    margin-top: 1rem;
+
+    strong {
+      display: block;
+      font-size: 1.2rem;
+    }
+
+    span {
+      font-size: 0.9rem;
+      color: #777;
+    }
+  }
+
+  .dots {
+    margin-top: 1rem;
+
+    .dot {
+      height: 10px;
+      width: 10px;
+      background-color: #ccc;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 0 5px;
+      cursor: pointer;
+
+      &.active {
+        background-color: $primary-blue;
+      }
+    }
+  }
+}

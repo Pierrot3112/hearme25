@@ -92,11 +92,11 @@ const Sidebar = ({ onMenuClick }) => {
             )}
             {hoveredMenu === "certification" && <span className="menu-label">Certification</span>}
           </li>
+          <li className="profile-icon" onClick={toggleProfileMenu}>
+            <img src={UserImage} alt="User" />
+          </li>
+          {profileMenuOpen && <ProfileMenu />}
         </ul>
-        <div className="profile-icon" onClick={toggleProfileMenu}>
-          <img src={UserImage} alt="User" />
-        </div>
-        {profileMenuOpen && <ProfileMenu />}
       </nav>
     </div>
   );

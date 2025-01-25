@@ -1,4 +1,3 @@
-// HeroSection.scss
 $primary-blue: #015499;
 $white: #ffffff;
 $button-bg: #f3f3f3;
@@ -6,7 +5,9 @@ $text-color: $white;
 $icon-color: #000000;
 
 .deco-section {
-    background-image: url(../assets/images/f.png);
+  background-image: url(../assets/images/f.png);
+  background-size: cover; // S'assure que l'image couvre entièrement l'arrière-plan
+  background-position: center;
   color: $text-color;
   height: 60vh;
   display: flex;
@@ -17,7 +18,7 @@ $icon-color: #000000;
 
   .content {
     text-align: center;
-    z-index: 2; // To ensure it appears above background elements
+    z-index: 2; 
 
     h1 {
       font-family: "Britannic", sans-serif;
@@ -25,6 +26,14 @@ $icon-color: #000000;
       font-weight: bold;
       line-height: 1.5;
       margin-bottom: 20px;
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 0.8rem;
+      }
     }
 
     .cta-button {
@@ -44,6 +53,16 @@ $icon-color: #000000;
         background-color: $primary-blue;
         color: $white;
         transform: scale(1.05);
+      }
+
+      @media (max-width: 768px) {
+        padding: 5px 14px;
+        font-size: 1rem;
+      }
+
+      @media (max-width: 480px) {
+        padding: 3px 12px;
+        font-size: 0.8rem;
       }
     }
   }
@@ -86,6 +105,25 @@ $icon-color: #000000;
         right: 5%;
         background: url("/path/to/icon4.svg") no-repeat center / contain;
       }
+
+      @media (max-width: 768px) {
+        width: 40px;
+        height: 40px;
+      }
+
+      @media (max-width: 480px) {
+        width: 30px;
+        height: 30px;
+      }
     }
+  }
+
+  // Responsive adjustments for section height
+  @media (max-width: 768px) {
+    height: 50vh; // Réduit la hauteur sur tablettes
+  }
+
+  @media (max-width: 480px) {
+    height: 40vh; // Réduit davantage la hauteur sur mobiles
   }
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './d.scss';
 import ChargementEvDemar from './ChargementEvDemar'; // Import your loading component
-import TestInterface from './CommencerInterface'; // Import the component you want to show after loading
+import CommencerInterface from './CommencerInterface'; // Import the component you want to show after loading
 
 const EvaluationDetail = ({ evaluation }) => {
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal open/close state
@@ -17,7 +17,7 @@ const EvaluationDetail = ({ evaluation }) => {
       setIsLoading(false); // Hide the loading component after 5 seconds
       setShowTestContent(true); // Show the test interface
       console.log('Test content shown:', showTestContent);
-    }, 100000);
+    }, 3000);
   };
 
   const handleCloseModal = () => {
@@ -75,7 +75,7 @@ const EvaluationDetail = ({ evaluation }) => {
               <ChargementEvDemar />
             ) : (
               showTestContent && (
-                <TestInterface />
+                <CommencerInterface evaluation={evaluation} />
               )
             )}
 

@@ -115,6 +115,8 @@ header {
           }
         }
       }
+
+      
     }
   
     .auth-buttons {
@@ -400,6 +402,8 @@ header {
 
 .contact-container {
     display: flex;
+    width: 100vw;
+    padding: 10px;
 
     .contact-form {
         flex-grow: 1;
@@ -467,6 +471,21 @@ header {
             margin-bottom: 10px;
         }
     }
+
+
+    @media (max-width: 768px) {
+        display: block;
+
+        .contact-form {
+            width: 100%;
+
+
+        }
+
+        .contact-image {
+            display: none;
+        }
+    }
 }
 
 // Animation des messages d'erreur
@@ -490,5 +509,9 @@ header {
 
     .contact-content {
         padding: 20px 120px;
+
+        @media (max-width: 768px) {
+            padding: 10px 100px;
+        }
     }
 }
