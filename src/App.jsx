@@ -7,8 +7,8 @@ import Formations from './pages/Formation'
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import Dashboard from './pages/StudentPages/Dashboard';
-import ProfileDetails from './pages/StudentPages/ProfileDetails';
-import Abonnement from './pages/StudentPages/Abonnement';
+import ProfileDetails from './pages/StudentPages/UserComponents/ProfileDetails';
+import Abonnement from './pages/StudentPages/UserComponents/Abonnement';
 import AboutPage from './pages/AboutPage';
 import Admin from './pages/Admin/Admin';
 

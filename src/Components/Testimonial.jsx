@@ -11,13 +11,10 @@ const Temoignages = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % temoignagesData.length);
-    }, 5000); // Changer de témoignage toutes les 5 secondes
+    }, 5000); 
     return () => clearInterval(interval);
   }, [temoignagesData.length]);
 
-  // Debugging : affichage des données dans la console
-  console.log('Active index:', activeIndex);
-  console.log('Témoignages Data:', temoignagesData);
 
   return (
     <div className="temoignages">

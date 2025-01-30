@@ -109,8 +109,8 @@ $primary-blue: #1DA1F2;
 
 .cours-selected {
   .detail-courses {
-    width: 1024x;
-    padding-top: 50px;
+    width: 1024px;
+    padding-top: 30px;
     h1 {
         font-size: 28px;
     }
@@ -118,13 +118,15 @@ $primary-blue: #1DA1F2;
     .level-modul {
         padding-top: 5px;
         color: #04a2fd;
+        font-size: 24px;
     }
   
     .content-course {
       display: flex;
+      justify-content: space-between;
   
       .video {
-        width: 45%;
+        width: 35%;
         video{
           height: 45%;
           border-radius: 10px;
@@ -132,7 +134,7 @@ $primary-blue: #1DA1F2;
       }
   
       .description-cd {
-        width: 35%;
+        width: 40%;
 
         .teacher {
           display: flex;

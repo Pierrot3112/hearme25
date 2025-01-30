@@ -1,8 +1,8 @@
 import React from 'react';
 import { EastOutlined } from "@mui/icons-material"; // MUI Icons
-import Header from './Header';
+import Header from './UserComponents/Header';
 import FormationCard from '../../Components/FormationCard';
-import './d.scss'
+import './UserStyle/d.scss'
 
 const Home = () => {
     return (

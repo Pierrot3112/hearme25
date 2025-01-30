@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; 
 import { Box, Button, Typography, Avatar, IconButton } from "@mui/material";
-import img_url from "../../assets/images/user.jpg";
-import poste_icon from "../../assets/images/user.jpg"; 
-import level_icon from "../../assets/images/user.jpg"; 
-import point_icon from "../../assets/images/user.jpg"; 
+import img_url from "../../../assets/images/user.jpg";
+import poste_icon from "../../../assets/images/user.jpg"; 
+import level_icon from "../../../assets/images/user.jpg"; 
+import point_icon from "../../../assets/images/user.jpg"; 
 
 const ProfileDetails = () => {
   const navigate = useNavigate(); 

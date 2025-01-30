@@ -1,5 +1,5 @@
 import React from "react";
-import "./d.scss";
+import "../UserStyle/d.scss";
 import SearchIcon from "@mui/icons-material/Search";
 
 const SearchBar = () => {

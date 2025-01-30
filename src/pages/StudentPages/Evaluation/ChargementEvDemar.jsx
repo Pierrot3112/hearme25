@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../assets/images/lgl.png'
+import logo from '../../../assets/images/lgl.png'
 
 const ChargementEvDemar = () => {
     return (

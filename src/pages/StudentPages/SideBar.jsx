@@ -9,9 +9,9 @@ import {
   WorkspacePremium,
   WorkspacePremiumOutlined,
 } from "@mui/icons-material"; // MUI Icon
-import "./d.scss";
+import "./UserStyle/d.scss";
 import UserImage from "../../assets/images/user.jpg";
-import ProfileMenu from "./ProfileMenu";
+import ProfileMenu from "./UserComponents/ProfileMenu";
 
 const Sidebar = ({ onMenuClick }) => {
   const [activeMenu, setActiveMenu] = useState("home");

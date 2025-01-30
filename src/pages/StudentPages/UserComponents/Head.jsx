@@ -1,5 +1,5 @@
 import React from "react";
-import "./d.scss";
+import "../UserStyle/d.scss";
 import SearchBar from "./SearchBar";
 import Notification from "./Notification";
 

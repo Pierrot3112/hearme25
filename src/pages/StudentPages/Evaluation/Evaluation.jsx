@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Agriculture, Campaign, Brush, Devices } from "@mui/icons-material"; // Updated icon for Marketing
-import Head from "./Head";
 import EvaluationDetail from "./EvaluationDetails"; // Import the new component
+import Head from "../UserComponents/Head";
 
 // Evaluations data
 const evaluations = [

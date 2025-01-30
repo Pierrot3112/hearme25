@@ -3,7 +3,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ResultReport from "./ResultReport";
 import CircularProgressBar from "./CircularProgressBar";
-import data from "./data.json";
+import data from "../data.json";
 import ProgressBar from "./ProgessBar";
 
 const EvaluationStart = ({ evaluation, onFinish }) => {

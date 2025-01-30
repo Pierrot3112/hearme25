@@ -1,8 +1,7 @@
 import React,  { useState }  from "react";
 import Sidebar from "./SideBar";
-import Header from "./Header";
 import Content from "./Content";
-import "./d.scss";
+import "./UserStyle/d.scss";
 
 const Dashboard = () => {
     const [activeMenu, setActiveMenu] = useState("home");

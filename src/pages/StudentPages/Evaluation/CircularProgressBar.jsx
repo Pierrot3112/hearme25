@@ -1,7 +1,7 @@
 import React from "react";
 
 const CircularProgressBar = ({ timeLeft, totalTime }) => {
-  const radius = 50;
+  const radius = 20;
   const strokeWidth = 8;
   const circumference = 2 * Math.PI * radius;
   const timeSpent = totalTime - timeLeft;
@@ -29,7 +29,7 @@ const CircularProgressBar = ({ timeLeft, totalTime }) => {
         strokeDashoffset={dashOffset}
       />
       <text x="50%" y="50%" textAnchor="middle" dy=".3em" fontSize="16">
-        {Math.ceil(timeLeft / 60)}m
+        {Math.ceil(timeLeft / 60)}
       </text>
     </svg>
   );

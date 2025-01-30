@@ -9,7 +9,8 @@ import {
   IconButton,
 } from "@mui/material";
 import { Star as StarIcon } from "@mui/icons-material";
-import Head from "./Head";
+import Head from "../UserComponents/Head";
+import Certificat from "./Certificat";
 //import Person from "../../assets/images/person_certified.png";
 
 const certifications = [
@@ -122,6 +123,7 @@ const Certification = () => {
           </Grid>
         ))}
       </Grid>
+      <Certificat />
     </Box>
   );
 };

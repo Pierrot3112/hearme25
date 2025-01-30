@@ -8,7 +8,6 @@ const Hero = () => {
   const navigate = useNavigate();
 
   const handleButtonCommencerClick = () => {
-    // Rediriger vers la page de login
     console.log('clické');
     navigate('/login');
   };
@@ -25,8 +24,8 @@ const Hero = () => {
         <div className='description'>
           <p> {data.hero.home.description} </p>
         </div>
-        <div className="btn-box" onClick={handleButtonCommencerClick}>
-          {data.hero.home.button}
+        <div>
+          <a href="/login" style={{textDecoration: "none"}} className="btn-box">{data.hero.home.button}</a>
         </div>
       </section>
     </div>

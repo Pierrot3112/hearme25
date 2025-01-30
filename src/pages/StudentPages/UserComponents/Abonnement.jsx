@@ -1,8 +1,8 @@
 import React from "react";
-import img_url from "../../assets/images/user.jpg";
-import poste_icon from "../../assets/images/user.jpg";
-import level_icon from "../../assets/images/user.jpg";
-import point_icon from "../../assets/images/user.jpg";
+import img_url from "../../../assets/images/user.jpg";
+import poste_icon from "../../../assets/images/user.jpg";
+import level_icon from "../../../assets/images/user.jpg";
+import point_icon from "../../../assets/images/user.jpg";
 
 const Abonnement = ({ isVisible, onClose }) => {
   const second_row = [

@@ -1,10 +1,9 @@
 import React from "react";
-import "./d.scss";
+import "./UserStyle/d.scss";
 import Home from "./Home";
-import Courses from "./Courses";
-import Evaluation from "./Evaluation";
-import Certification from "./Certification";
-import FormationSelected from "../../Components/FormationSelected";
+import Courses from "./Formation/Courses";
+import Evaluation from "./Evaluation/Evaluation";
+import Certification from "./Certification/Certification";
 
 const Content = ({ activeMenu }) => {
   let content;

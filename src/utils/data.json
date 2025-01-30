@@ -59,7 +59,8 @@
       "image": "/fond.jfif",
       "description": "Ce cours est dédié aux passionnés et débutants dans le domaine de l'agri-business. Avec des modules de formations complets.",
       "author": "/logo.jpg",
-      "statut": "Gratuit >>"
+      "statut": "Gratuit >>",
+      "teacher": "Mr Jeff"
     },
     {
       "id": 2,
@@ -67,7 +68,8 @@
       "image": "/fond.jfif",
       "description": "Un cours complet pour les éducateurs et formateurs désireux de découvrir des outils pédagogiques modernes.",
       "author": "/logo.jpg",
-      "statut": "Payant >>"
+      "statut": "Payant >>",
+      "teacher": "Mr Markov"
     },
     {
       "id": 3,
@@ -75,7 +77,8 @@
       "image": "/fond.jfif",
       "description": "Apprenez les bases de la programmation et développez vos compétences en informatique dès aujourd'hui.",
       "author": "/logo.jpg",
-      "statut": "Gratuit >>"
+      "statut": "Gratuit >>",
+      "teacher": "Mme Julia"
     },
     {
       "id": 4,
@@ -83,7 +86,8 @@
       "image": "/fond.jfif",
       "description": "Découvrez le langage des signes pour mieux communiquer avec les personnes malentendantes.",
       "author": "/logo.jpg",
-      "statut": "Gratuit >>"
+      "statut": "Gratuit >>",
+      "teacher": "Mlle Gracia"
     }
   ],
   "testimonials": [

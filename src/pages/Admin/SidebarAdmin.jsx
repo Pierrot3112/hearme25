@@ -4,7 +4,8 @@ import './Admin.scss';
 
 const SidebarAdmin = ({ onMenuClick }) => {
   const [activeMenu, setActiveMenu] = useState("home");
-  const [expandCourse, setExpandCourse] = useState(false); // Gère l'expansion des sous-menus
+  const [expandCourse, setExpandCourse] = useState(false); 
+  const [expandEvaluation, setExpandEvaluation] = useState(false); 
 
   const handleMenuClick = (menuName) => {
     setActiveMenu(menuName);
@@ -12,7 +13,11 @@ const SidebarAdmin = ({ onMenuClick }) => {
   };
 
   const toggleCourseMenu = () => {
-    setExpandCourse(!expandCourse); // Inverse l'état des sous-menus
+    setExpandCourse(!expandCourse); 
+  };
+
+  const toggleEvaluationMenu = () => {
+    setExpandEvaluation(!expandEvaluation); 
   };
 
   return (
@@ -43,7 +48,6 @@ const SidebarAdmin = ({ onMenuClick }) => {
           </li>
           {/* Menu Formation avec sous-menus */}
           <li
-            className={activeMenu === "course" ? "active" : ""}
             onClick={toggleCourseMenu}
           >
             <School className='icon' />
@@ -67,13 +71,28 @@ const SidebarAdmin = ({ onMenuClick }) => {
               </div>
             )}
           <li
-            className={activeMenu === "evaluation" ? "active" : ""}
-            onClick={() => handleMenuClick("evaluation")}
+            onClick={toggleEvaluationMenu}
           >
             <Assessment className='icon' />
             <p className="list-menu">Évaluations</p>
-            {expandCourse ? <ExpandMore className="expand-icon" /> : <ChevronRight className="expand-icon" />}
+            {expandEvaluation ? <ExpandMore className="expand-icon" /> : <ChevronRight className="expand-icon" />}
           </li>
+            {expandEvaluation && (
+              <div className="submenu">
+                <div
+                  className={activeMenu === "addEvaluation" ? "active" : ""}
+                  onClick={() => handleMenuClick("evaluation")}
+                >
+                  <p>Créer une évaluation</p>
+                </div>
+                <div
+                  className={activeMenu === "allEvaluation" ? "active" : ""}
+                  onClick={() => handleMenuClick("evaluation")}
+                >
+                  <p>Evaluations ajoutés</p>
+                </div>
+              </div>
+            )}
           <li
             className={activeMenu === "certification" ? "active" : ""}
             onClick={() => handleMenuClick("certification")}

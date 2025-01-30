@@ -8,7 +8,7 @@ const Notification = () => {
       <IconButton sx={{ color: "black", marginRight: 1 }}>
         <NotificationsIcon />
       </IconButton>
-      <Typography variant="body2" sx={{ fontSize: 14 }}>
+      <Typography variant="body2" sx={{ fontSize: 14 }} className="none">
         0 px
       </Typography>
     </Box>

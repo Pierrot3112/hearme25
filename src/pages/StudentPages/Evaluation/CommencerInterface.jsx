@@ -5,7 +5,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import CounterChargement from "./CounterChargement"; // Importer le composant CountdownCircle
 import EvaluationStart from "./EvaluationStart"; // Importer le nouveau composant NextInterface
-import logo from "../../assets/images/lgl.png";
+import logo from "../../../assets/images/lgl.png";
 
 const CommencerInterface = ({ evaluation }) => {
   const [currentStep, setCurrentStep] = useState("start"); // État pour gérer les étapes
@@ -21,7 +21,7 @@ const CommencerInterface = ({ evaluation }) => {
   return (
     <div className="start-interface-container">
       {currentStep === "start" && (
-        <div>
+        <section>
           <div className="fq-rg">
             <div className="space"></div>
             <div className="btn-fq-rg">
@@ -59,7 +59,7 @@ const CommencerInterface = ({ evaluation }) => {
               En moyenne, les utilisateurs terminent le test en 12 minutes
             </p>
           </div>
-        </div>
+        </section>
       )}
    {currentStep === "countdown" && (
         <CounterChargement onFinish={handleCountdownFinish} />
