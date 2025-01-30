@@ -81,7 +81,7 @@ const Evaluation = () => {
                 padding: "8px 16px",
               }}
             >
-              Avancé
+              Avancé 
             </button>
             <hr />
           </div>
@@ -89,6 +89,7 @@ const Evaluation = () => {
       )}
 
 
+      {/* Conditional rendering of either the Evaluation list or the selected evaluation detail */}
       {/* Conditional rendering of either the Evaluation list or the selected evaluation detail */}
       {selectedEvaluation ? (
         // Render EvaluationDetail component when an evaluation is clicked
