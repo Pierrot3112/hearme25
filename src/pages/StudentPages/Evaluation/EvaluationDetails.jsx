@@ -1,29 +1,11 @@
 import React, { useState } from 'react';
 import '../UserStyle/d.scss';
-import ChargementEvDemar from './ChargementEvDemar'; // Import your loading component
-import CommencerInterface from './CommencerInterface'; // Import the component you want to show after loading
+import { useNavigate } from "react-router-dom";
 
 const EvaluationDetail = ({ evaluation }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false); // Modal open/close state
-  const [isLoading, setIsLoading] = useState(false); // Loading state
-  const [showTestContent, setShowTestContent] = useState(false); // Show the test content after 5 seconds
-
+  const navigate = useNavigate();
   const handleStartTest = () => {
-    setIsModalOpen(true); // Open the modal
-    setIsLoading(true); // Show the loading component
-    console.log('Modal Opened:', isModalOpen);
-
-    setTimeout(() => {
-      setIsLoading(false); // Hide the loading component after 5 seconds
-      setShowTestContent(true); // Show the test interface
-      console.log('Test content shown:', showTestContent);
-    }, 3000);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false); // Close the modal
-    setIsLoading(true); // Reset the loading state
-    setShowTestContent(false); // Reset the test content display
+    navigate(`/user/evaluation/${evaluation.id}`);
   };
 
   return (
@@ -65,29 +47,6 @@ const EvaluationDetail = ({ evaluation }) => {
           <li>Vous disposez de 2 tentatives par évaluation tous les 30 jours.</li>
         </ul>
       </div>
-
-      {/* Modal Window for Loading and Test Content */}
-      {isModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            {/* Show loading content or test content */}
-            {isLoading ? (
-              <ChargementEvDemar />
-            ) : (
-              showTestContent && (
-                <CommencerInterface evaluation={evaluation} />
-              )
-            )}
-
-            {/* Close Button (only shown when not loading) */}
-            {!isLoading && (
-              <p className="closeBtn" onClick={handleCloseModal}>
-                x
-              </p>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 };

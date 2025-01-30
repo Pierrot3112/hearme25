@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
@@ -20,7 +20,7 @@ const CommencerInterface = ({ evaluation }) => {
 
   return (
     <div className="start-interface-container">
-      {currentStep === "start" && (
+      {currentStep === "start" && evaluation && (
         <section>
           <div className="fq-rg">
             <div className="space"></div>

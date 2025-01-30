@@ -11,6 +11,7 @@ import ProfileDetails from './pages/StudentPages/UserComponents/ProfileDetails';
 import Abonnement from './pages/StudentPages/UserComponents/Abonnement';
 import AboutPage from './pages/AboutPage';
 import Admin from './pages/Admin/Admin';
+import CommencerInterfaceTest from './pages/StudentPages/Evaluation/CommencerInterfaceTest';
 
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/user" element={<Dashboard />} />
+        <Route path="/user/*" element={<Dashboard />} />
+        <Route path="/user/evaluation/:id" element={<CommencerInterfaceTest />} />
         <Route path="/user/profile" element={<ProfileDetails />} />
         <Route path="/user/history" element={<Abonnement />} />
         <Route path="/user/abonment" element={<Abonnement />} />
