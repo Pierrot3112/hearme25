@@ -17,7 +17,7 @@ const LoginPage = () => {
 
     useEffect(() => {
         if (isLoggedIn) {
-            navigate("/dashboard");
+            navigate("/user");
         }
 
         if (error) {
@@ -30,7 +30,7 @@ const LoginPage = () => {
         try {
             await dispatch(login(email, password));
             toast.success("Connexion réussie !");
-            navigate("/dashboard");
+            navigate("/user");
         } catch (err) {
             toast.error(err.message || "Impossible de se connecter, vérifiez vos informations.");
         }

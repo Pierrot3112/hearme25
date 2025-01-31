@@ -2,8 +2,19 @@ import React from "react";
 import { PermIdentityOutlined, HistoryOutlined, CardTravelOutlined, LogoutOutlined } from "@mui/icons-material";
 import { Link } from "react-router-dom"; // Utilisation de Link pour éviter un rechargement complet de la page
 import "./menuFlot.scss";
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { LOGOUT } from "../../../Auth/actions/types";
+
 
 const ProfileMenu = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleClickLogout = () =>{
+    localStorage.removeItem('user');
+    dispatch({ type: LOGOUT });
+    navigate('/login');
+  }
   return (
     <div className="profile-menu">
       <div className="profile-menu-content">
@@ -28,10 +39,10 @@ const ProfileMenu = () => {
             </Link>
           </li>
           <li>
-            <Link to="/logout" className="lien">
+            <div className="lien" onClick={handleClickLogout}>
               <LogoutOutlined />
               <p>Se Deconnecter</p>
-            </Link>
+            </div>
           </li>
         </ul>
       </div>

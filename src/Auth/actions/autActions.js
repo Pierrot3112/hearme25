@@ -30,11 +30,20 @@ export const signup = (username, email, password, roles) => async (dispatch) => 
 // Action creator pour la connexion
 export const login = (email, password) => async (dispatch) => {
   try {
-    const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
-      email,
-      password,
-    });
-    localStorage.setItem(JSON.stringify(response.data))
+    // const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
+    //   email,
+    //   password,
+    // });
+
+    // test
+    const response={
+      data:{
+        email:email,
+        name:"Test",
+        token:"testToken"
+      }
+    }
+    localStorage.setItem('user',JSON.stringify(response.data))
     // Si la connexion réussit, dispatcher LOGIN_SUCCESS
     dispatch({ type: LOGIN_SUCCESS, payload: response.data });
   } catch (error) {
