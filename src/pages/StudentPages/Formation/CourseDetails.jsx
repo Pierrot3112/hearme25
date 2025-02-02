@@ -16,7 +16,7 @@ const CourseDetails = ({ formation, onStartFormation }) => {
   const handleStartFormation = () => {
     setShowFormationSelected(true);
     if (onStartFormation) {
-      onStartFormation(); // Masque l'introduction
+      onStartFormation(); 
     }
   };
 

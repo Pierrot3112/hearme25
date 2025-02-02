@@ -51,6 +51,9 @@ const RegisterPage = () => {
 
       if (response.status === 200 || response.status === 201) {
         navigate("/login");
+        console.log('====================================');
+        console.log(response.status, " test", response.data);
+        console.log('====================================');
       }
     } catch (error) {
       console.error("Erreur d'inscription :", error);

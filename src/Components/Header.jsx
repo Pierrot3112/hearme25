@@ -4,6 +4,7 @@ import data from '../utils/data.json';
 import '../style/global.css';
 import React from 'react';
 import '../style/bootstrap/jquery-3.4.1.min.js';
+import '../style/bootstrap/bootstrap.js';
 
 
 const Header = () => {

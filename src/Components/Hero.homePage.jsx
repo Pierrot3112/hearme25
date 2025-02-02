@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import data from '../utils/data.json';
 import homeBack from '../assets/video/backHomee.mp4'
 import '../style/home.scss';
@@ -24,9 +24,7 @@ const Hero = () => {
         <div className='description'>
           <p> {data.hero.home.description} </p>
         </div>
-        <div>
-          <a href="/login" style={{textDecoration: "none"}} className="btn-box">{data.hero.home.button}</a>
-        </div>
+        <Link to="/login"style={{textDecoration: "none"}} className="btn-box">{data.hero.home.button}</Link> 
       </section>
     </div>
   );

@@ -32,31 +32,31 @@ const Sidebar = () => {
         <div className="logo">HEARME</div>
         <nav className="menu">
           <ul className="sidemenu">
-            <li className={location.pathname === "/home" ? "active" : ""} onMouseEnter={() => handleMouseEnter("home")} onMouseLeave={handleMouseLeave}>
+            <li id="user-side" className={location.pathname === "/home" ? "active" : ""} onMouseEnter={() => handleMouseEnter("home")} onMouseLeave={handleMouseLeave}>
               <Link to="/user/home">
                 {location.pathname === "/home" ? <Home fontSize="large" /> : <HomeOutlined fontSize="large" />}
                 {hoveredMenu === "home" && <span className="menu-label">Accueil</span>}
               </Link>
             </li>
-            <li className={location.pathname === "/user/courses" ? "active" : ""} onMouseEnter={() => handleMouseEnter("courses")} onMouseLeave={handleMouseLeave}>
+            <li id="user-side" className={location.pathname === "/user/courses" ? "active" : ""} onMouseEnter={() => handleMouseEnter("courses")} onMouseLeave={handleMouseLeave}>
               <Link to="/user/courses">
                 {location.pathname === "/user/courses" ? <MenuBook fontSize="large" /> : <MenuBookOutlined fontSize="large" />}
                 {hoveredMenu === "courses" && <span className="menu-label">Cours</span>}
               </Link>
             </li>
-            <li className={location.pathname === "/user/evaluation" ? "active" : ""} onMouseEnter={() => handleMouseEnter("evaluation")} onMouseLeave={handleMouseLeave}>
+            <li id="user-side" className={location.pathname === "/user/evaluation" ? "active" : ""} onMouseEnter={() => handleMouseEnter("evaluation")} onMouseLeave={handleMouseLeave}>
               <Link to="/user/evaluation">
                 {location.pathname === "/user/evaluation" ? <School fontSize="large" /> : <SchoolOutlined fontSize="large" />}
                 {hoveredMenu === "evaluation" && <span className="menu-label">Évaluation</span>}
               </Link>
             </li>
-            <li className={location.pathname === "/user/certification" ? "active" : ""} onMouseEnter={() => handleMouseEnter("certification")} onMouseLeave={handleMouseLeave}>
+            <li id="user-side" className={location.pathname === "/user/certification" ? "active" : ""} onMouseEnter={() => handleMouseEnter("certification")} onMouseLeave={handleMouseLeave}>
               <Link to="/user/certification">
                 {location.pathname === "/user/certification" ? <WorkspacePremium fontSize="large" /> : <WorkspacePremiumOutlined fontSize="large" />}
                 {hoveredMenu === "certification" && <span className="menu-label">Certification</span>}
               </Link>
             </li>
-            <li className="profile-icon" onClick={toggleProfileMenu}>
+            <li id="user-side" className="profile-icon" onClick={toggleProfileMenu}>
               <img src={UserImage} alt="User" />
             </li>
             {profileMenuOpen && <ProfileMenu />}

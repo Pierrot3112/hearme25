@@ -13,32 +13,32 @@ const ProfileMenu = () => {
   const handleClickLogout = () =>{
     localStorage.removeItem('user');
     dispatch({ type: LOGOUT });
-    navigate('/login');
+    navigate('/');
   }
   return (
     <div className="profile-menu">
       <div className="profile-menu-content">
         <ul className="profile-options">
           {/* Liens avec React Router */}
-          <li>
+          <li id="user-li">
             <Link to="/user/profile" className="lien">
               <PermIdentityOutlined />
               <p>Profile</p>
             </Link>
           </li>
-          <li>
+          <li id="user-li">
             <Link to="/user/history" className="lien">
               <HistoryOutlined />
               <p>Historiques</p>
             </Link>
           </li>
-          <li>
+          <li id="user-li">
             <Link to="/user/abonment" className="lien">
               <CardTravelOutlined />
               <p>Abonnement</p>
             </Link>
           </li>
-          <li>
+          <li id="user-li">
             <div className="lien" onClick={handleClickLogout}>
               <LogoutOutlined />
               <p>Se Deconnecter</p>
