@@ -85,6 +85,7 @@ const Evaluation = () => {
             </button>
             <hr />
           </div>
+          <hr />
         </div>
       )}
 
