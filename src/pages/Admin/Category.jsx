@@ -3,14 +3,39 @@ import Img from '../../assets/images/person1.png';
 import data from './data.json';
 
 const Category = () => {
-  const categories = data?.category || [];
+  const [categories, setCategories] = useState(data?.category || []);
+  const [categoryName, setCategoryName] = useState('');
+  const [categoryDescription, setCategoryDescription] = useState('');
 
-  // Pagination setup (modifiez les valeurs selon vos besoins)
+  // Pagination setup
   const itemsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
   const indexOfFirstItem = (currentPage - 1) * itemsPerPage;
   const indexOfLastItem = currentPage * itemsPerPage;
   const currentCategory = categories.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(categories.length / itemsPerPage);
+
+  const handlePageChange = (newPage) => {
+    if (newPage >= 1 && newPage <= totalPages) {
+      setCurrentPage(newPage);
+    }
+  };
+
+  // Fonction pour gérer la soumission du formulaire
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!categoryName.trim() || !categoryDescription.trim()) return;
+    
+    const newCategory = {
+      id: categories.length + 1, // Génération d'un ID unique
+      nom: categoryName,
+      description: categoryDescription,
+    };
+    
+    setCategories([...categories, newCategory]);
+    setCategoryName('');
+    setCategoryDescription('');
+  };
 
   return (
     <div className="category-container">
@@ -18,19 +43,23 @@ const Category = () => {
       <section className="category-form">
         <article className="form">
           <h2>Ajouter une nouvelle catégorie</h2>
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <div className="form-group">
               <input
                 type="text"
                 name="categoryName"
                 id="categoryName"
                 placeholder="Nom"
+                value={categoryName}
+                onChange={(e) => setCategoryName(e.target.value)}
               />
               <input
                 type="text"
                 name="categoryDescription"
                 id="categoryDescription"
                 placeholder="Description"
+                value={categoryDescription}
+                onChange={(e) => setCategoryDescription(e.target.value)}
               />
             </div>
             <button type="submit">Enregistrer</button>
@@ -54,17 +83,26 @@ const Category = () => {
           </thead>
           <tbody>
             {currentCategory.map((category, index) => (
-              <tr
-                key={category.id} // Utilisation de la clé correcte
-                className={` ${index % 2 === 0 ? 'even' : 'odd'}`}
-              >
+              <tr key={category.id} className={index % 2 === 0 ? 'even' : 'odd'}>
                 <td>{category.id}</td>
                 <td className="blue-text">{category.nom}</td>
-                <td className='gray-text'>{category.description}</td>
+                <td className="gray-text">{category.description}</td>
               </tr>
             ))}
           </tbody>
         </table>
+        {/* Pagination */}
+        {categories.length > itemsPerPage && (
+          <div className="pagination">
+            <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+              {"<<"}
+            </button>
+            <span>  {currentPage} / {totalPages} </span>
+            <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+              {">>"}
+            </button>
+          </div>
+        )}
       </section>
     </div>
   );

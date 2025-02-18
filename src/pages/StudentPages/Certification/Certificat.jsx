@@ -1,17 +1,13 @@
 import React from 'react';
-
 import './ct.scss';
+import logo from '../../../assets/images/lgl.png';
+import logo_orange from '../../../assets/images/orange_logoo.webp';
+import logo_undp from '../../../assets/images/UNDP.png';
 
-import logo from '../../../assets/images/lgl.png'
-import logo_orange from '../../../assets/images/orange_logoo.webp'
-import logo_undp from '../../../assets/images/UNDP.png'
-
-const Certificat = () => {
+const Certificat = ({ selectedCertif }) => {
     return (
-        <secction className="mt-5">
-            <h1>
-                Pourquoi devriez-vous obtenir une certification?
-            </h1>
+        <section className="mt-5">
+            <h1>Pourquoi devriez-vous obtenir une certification?</h1>
             <div className="container">
                 <div className="certificat">
                     <div className="ct">
@@ -23,11 +19,14 @@ const Certificat = () => {
                             </div>
                         </div>
                         <h2>CERTIFICAT PROFESSIONNEL</h2>
-                        <h1 className='mb-3'>Agri-Business</h1>
+                        {/* Affichage dynamique du titre du certificat sélectionné */}
+                        <h1 className='mb-3'>{selectedCertif?.title || "Agri-Business"}</h1>
                         <div className="ct-uv">
                             <h3>ISSUE DE L'</h3>
                             <h1>Université d'Antananarivo</h1>
-                            <p>Ce cours est dédié aux passionnés et débuttants dans le domaine de la marketing digitale. Avec des modules de formations complets.</p>
+                            <p>
+                                {selectedCertif?.description || "Ce cours est dédié aux passionnés et débutants dans le domaine de la formation professionnelle."}
+                            </p>
                             <p className="mt-3">Obtenu le 13 Mai 2024</p>
                         </div>
                         <div className="ct-foot">
@@ -49,18 +48,18 @@ const Certificat = () => {
                 <div className="desc-ct">
                     <ul>
                         <li className="mb-3">
-                            Nos certifications sont à la fois partageables et reconnues au sein de l'industries.
+                            Nos certifications sont à la fois partageables et reconnues au sein de l'industrie.
                         </li>
                         <li className="mb-3">
-                            Envoyer un signal clair aux employeurs concernant votre expertise.
+                            Envoyez un signal clair aux employeurs concernant votre expertise.
                         </li>
                         <li className="mb-3">
-                            Il n'y a auccun coût supplémentaire associé à votre certification Hearme.
+                            Il n'y a aucun coût supplémentaire associé à votre certification Hearme.
                         </li>
                     </ul>
                 </div>
             </div>
-        </secction>
+        </section>
     );
 };
 

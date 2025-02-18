@@ -58,6 +58,8 @@ const LoginPage = () => {
             </div>
             <div className="right-section">
                 <h2>Connexion</h2>
+                <div className="curved-line"></div>
+                <br />
                 <div className="underline"></div>
                 <form className="register-form" onSubmit={handleLogin}>
                     <div className="form-group">

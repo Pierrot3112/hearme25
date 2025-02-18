@@ -51,9 +51,6 @@ const RegisterPage = () => {
 
       if (response.status === 200 || response.status === 201) {
         navigate("/login");
-        console.log('====================================');
-        console.log(response.status, " test", response.data);
-        console.log('====================================');
       }
     } catch (error) {
       console.error("Erreur d'inscription :", error);
@@ -87,6 +84,8 @@ const RegisterPage = () => {
       </div>
       <div className="right-section">
         <h2>Inscription</h2>
+        <div className="curved-line"></div>
+        <br />
         <div className="underline"></div>
         <form className="register-form" onSubmit={handleSubmit}>
           {/* Nom d'utilisateur */}

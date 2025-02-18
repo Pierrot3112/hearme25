@@ -3,7 +3,6 @@ import { Agriculture, Campaign, Brush, Devices } from "@mui/icons-material"; // 
 import EvaluationDetail from "./EvaluationDetails"; // Import the new component
 import Head from "../UserComponents/Head";
 
-// Evaluations data
 const evaluations = [
   {
     id: 1,
@@ -40,7 +39,6 @@ const evaluations = [
 const Evaluation = () => {
   const [selectedEvaluation, setSelectedEvaluation] = useState(null);
 
-  // Handle the click on a formation
   const handleClick = (evaluation) => {
     setSelectedEvaluation(evaluation);
   };
@@ -49,7 +47,6 @@ const Evaluation = () => {
     <div style={{ padding: "16px" }}>
       <Head />
 
-      {/* Section Header */}
       {!selectedEvaluation && (
         <div style={{ marginBottom: "24px" }}>
           <h1 style={{ fontWeight: "bold" }}>Evaluations</h1>
@@ -90,13 +87,9 @@ const Evaluation = () => {
       )}
 
 
-      {/* Conditional rendering of either the Evaluation list or the selected evaluation detail */}
-      {/* Conditional rendering of either the Evaluation list or the selected evaluation detail */}
       {selectedEvaluation ? (
-        // Render EvaluationDetail component when an evaluation is clicked
         <EvaluationDetail evaluation={selectedEvaluation} />
       ) : (
-        // List of evaluations with icons
         <div style={{ display: "flex", flexWrap: "wrap", gap: "24px" }}>
           {evaluations.map((evaluation) => (
             <div

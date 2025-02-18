@@ -6,6 +6,8 @@ const SidebarAdmin = ({ onMenuClick }) => {
   const [activeMenu, setActiveMenu] = useState("home");
   const [expandCourse, setExpandCourse] = useState(false); 
   const [expandEvaluation, setExpandEvaluation] = useState(false); 
+  const [expandCertificat, setExpandCertificat] = useState(false); 
+  const [expandAbonment, setExpandAbonment] = useState(false); 
 
   const handleMenuClick = (menuName) => {
     setActiveMenu(menuName);
@@ -20,6 +22,13 @@ const SidebarAdmin = ({ onMenuClick }) => {
     setExpandEvaluation(!expandEvaluation); 
   };
 
+  const toggleCertificationMenu = () => {
+    setExpandCertificat(!expandCertificat);
+  }
+
+  const toggleAbonmentMenu = () => {
+    setExpandAbonment(!expandAbonment);
+  }
   return (
     <aside className="sidebarAdmin">
       <h2>HEARME</h2>
@@ -81,33 +90,64 @@ const SidebarAdmin = ({ onMenuClick }) => {
               <div className="submenu">
                 <div
                   className={activeMenu === "addEvaluation" ? "active" : ""}
-                  onClick={() => handleMenuClick("evaluation")}
+                  onClick={() => handleMenuClick("addEvaluation")}
                 >
-                  <p>Créer une évaluation</p>
+                  <p>Ajouter Evaluation</p>
                 </div>
                 <div
                   className={activeMenu === "allEvaluation" ? "active" : ""}
                   onClick={() => handleMenuClick("evaluation")}
                 >
-                  <p>Evaluations ajoutés</p>
+                  <p>Toutes Evaluations</p>
                 </div>
               </div>
             )}
           <li
-            className={activeMenu === "certification" ? "active" : ""}
-            onClick={() => handleMenuClick("certification")}
+            onClick={toggleCertificationMenu}
           >
             <Verified className='icon' />
             <p className="list-menu">Certifications</p>
-            {expandCourse ? <ExpandMore className="expand-icon" /> : <ChevronRight className="expand-icon" />}
+            {expandCertificat ? <ExpandMore className="expand-icon" /> : <ChevronRight className="expand-icon" />}
           </li>
+            {expandCertificat && (
+              <div className="submenu">
+                <div
+                  className={activeMenu === "addCertificat" ? "active" : ""}
+                  onClick={() => handleMenuClick("addCertificat")}
+                >
+                  <p>Ajouter Certificat</p>
+                </div>
+                <div
+                  className={activeMenu === "allCertificat" ? "active" : ""}
+                  onClick={() => handleMenuClick("allCertificat")}
+                >
+                  <p>Touses Certificat</p>
+                </div>
+              </div>
+            )}
           <li
-            className={activeMenu === "abonnement" ? "active" : ""}
-            onClick={() => handleMenuClick("abonnement")}
+            onClick={toggleAbonmentMenu}
           >
             <Subscriptions className='icon' />
             <p className="list-menu">Abonnements</p>
+            {expandAbonment ? <ExpandMore className="expand-icon" /> : <ChevronRight className="expand-icon" />}
           </li>
+          {expandAbonment && (
+              <div className="submenu">
+                <div
+                  className={activeMenu === "infoAbonment" ? "active" : ""}
+                  onClick={() => handleMenuClick("infoAbonment")}
+                >
+                  <p>Info Abonnement</p>
+                </div>
+                <div
+                  className={activeMenu === "abonnement" ? "active" : ""}
+                  onClick={() => handleMenuClick("abonnement")}
+                >
+                  <p>Abonnements</p>
+                </div>
+              </div>
+            )}
           <li
             className={activeMenu === "account" ? "active" : ""}
             onClick={() => handleMenuClick("account")}

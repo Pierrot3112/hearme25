@@ -1,15 +1,18 @@
 import React from 'react';
 import HomeAdmin from './HomeAdmin';
 import Category from './Category';
-import Formation from './AllCourses';
-import Evaluation from './Evaluation';
-import Certification from './Certification';
-import Abonment from './Abonment';
-import Compte from './Compte';
+import Formation from './Formation/AllCourses';
+import Evaluation from './Evaluation/Evaluation';
+import Certification from './Certificaation/Certification';
+import Abonment from './Abonnement/Abonment';
+import Compte from './Compte/Compte';
 import HeaderAdmin from './HeaderAdmin';
 import UsersTable from './UsersTable';
-import AjouterFormation from './AjoutFormation';
-import AllCourses from './AllCourses';
+import AjouterFormation from './Formation/AjoutFormation';
+import AllCourses from './Formation/AllCourses';
+import AddEvaluation from './Evaluation/AddEvaluation';
+import AddCertificat from './Certificaation/AddCertificat';
+import InfoAbonment from './Abonnement/InfoAbonment';
 
 const ContentAdmin = ({ activeMenu }) => {
     let content;
@@ -33,8 +36,17 @@ const ContentAdmin = ({ activeMenu }) => {
         case "evaluation":
             content = <Evaluation />;
             break;
-        case "certification":
+        case "addEvaluation":
+            content = <AddEvaluation />;
+            break;
+        case "addCertificat":
+            content = <AddCertificat />;
+            break;
+        case "allCertificat":
             content = <Certification />;
+            break;
+        case "infoAbonment":
+            content = <InfoAbonment />;
             break;
         case "abonnement":
             content = <Abonment />;
