@@ -121,7 +121,7 @@ const SidebarAdmin = ({ onMenuClick }) => {
                   className={activeMenu === "allCertificat" ? "active" : ""}
                   onClick={() => handleMenuClick("allCertificat")}
                 >
-                  <p>Touses Certificat</p>
+                  <p>Toutes Certificats</p>
                 </div>
               </div>
             )}

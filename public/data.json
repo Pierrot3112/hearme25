@@ -1,0 +1,21 @@
+{
+    "category": [
+        {"id": 1, "nom": "TECH & MEDIAS", "description": "Lorem ipsum dolor sit amet,"},
+        {"id": 2, "nom": "AGRIBUSINESS", "description": "Lorem ipsum dolor sit amet,"},
+        {"id": 3, "nom": "ART DIGITAL", "description": "Lorem ipsum dolor sit amet,"}
+    ],
+    "abonments": [
+      {"id":1, "type":"Gratuit"},
+      {"id":2, "type":"Basic"},
+      {"id": 3, "type": "Populaire"},
+      {"id": 4, "type": "Premium"}
+    ],
+    "levels": [
+      {"id": 1, "name": "Débutant"},
+      {"id": 2, "name": "Intérmediaire"},
+      {"id": 3, "name": "Avancé"}
+    ],
+    "abonmentInformation": [
+      
+    ]
+}

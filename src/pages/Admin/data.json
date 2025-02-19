@@ -275,5 +275,27 @@
     {"id": 1, "name": "Débutant"},
     {"id": 2, "name": "Intérmediaire"},
     {"id": 3, "name": "Avancé"}
+  ],
+  "certifications": [
+    { "id": 101, "title": "Introduction à la Programmation", "date": "12 Jan", "certified": 310, "level": "Avancée" },
+    { "id": 102, "title": "Maîtriser JavaScript", "date": "28 Feb", "certified": 512, "level": "Intermediaire" },
+    { "id": 103, "title": "Python pour Débutants", "date": "15 Mar", "certified": 123, "level": "Intermediaire" },
+    { "id": 104, "title": "Les Bases de l'IA", "date": "10 Apr", "certified": 451, "level": "Débutant" },
+    { "id": 105, "title": "Développement Web Avancé", "date": "30 May", "certified": 682, "level": "Avancée" },
+    { "id": 106, "title": "Introduction à HTML et CSS", "date": "14 Jun", "certified": 59, "level": "Avancée" },
+    { "id": 107, "title": "Conception de Bases de Données", "date": "19 Jul", "certified": 295, "level": "Débutant" },
+    { "id": 108, "title": "Algorithmes et Structures de Données", "date": "25 Aug", "certified": 811, "level": "Avancée" },
+    { "id": 109, "title": "Développement Mobile avec Flutter", "date": "7 Sep", "certified": 105, "level": "Débutant" },
+    { "id": 110, "title": "React pour Intermédiaires", "date": "3 Oct", "certified": 429, "level": "Débutant" },
+    { "id": 111, "title": "Node.js et APIs RESTful", "date": "12 Nov", "certified": 733, "level": "Intermediaire" },
+    { "id": 112, "title": "Création de Jeux avec Unity", "date": "20 Dec", "certified": 89, "level": "Intermediaire" },
+    { "id": 113, "title": "Développement Full-Stack", "date": "5 Jan", "certified": 198, "level": "Avancée" },
+    { "id": 114, "title": "titleachine Learning Avancé", "date": "15 Feb", "certified": 654, "level": "Intermediaire" },
+    { "id": 115, "title": "Docker et Kubernetes", "date": "8 Mar", "certified": 423, "level": "Avancée" },
+    { "id": 116, "title": "WordPress pour Débutants", "date": "27 Apr", "certified": 58, "level": "Avancée" },
+    { "id": 117, "title": "SEO et Marketing Digital", "date": "18 May", "certified": 745, "level": "QAvancée" },
+    { "id": 118, "title": "Introduction à C++", "date": "22 Jun", "certified": 136, "level": "Intermediaire" },
+    { "id": 119, "title": "Python pour la Science des Données", "date": "13 Jul", "certified": 487, "level": "Intermediaire" },
+    { "id": 120, "title": "Cybersécurité et Réseaux", "date": "6 Aug", "certified": 902, "level": "Intermediaire" }
   ]
 }
