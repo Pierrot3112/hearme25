@@ -10,7 +10,10 @@ const Temoignages = () => {
   // Gestion automatique du slider
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % temoignagesData.length);
+      setActiveIndex((prevIndex) => {
+        console.log(((((prevIndex)/2) + 1) % temoignagesData.length)*2);
+        return ((((prevIndex)/2) + 1) % temoignagesData.length)*2
+      });
     }, 5000); 
     return () => clearInterval(interval);
   }, [temoignagesData.length]);
@@ -25,7 +28,7 @@ const Temoignages = () => {
         {temoignagesData.map((temoignage, index) => (
           <div
             key={temoignage.id}
-            className={`testimonial ${index === activeIndex ? 'active' : ''}`}
+            className={`testimonial ${index === activeIndex/2 ? 'active' : ''}`}
             style={{
               transform: `translateX(${(index - activeIndex) * 100}%)`,
               transition: 'transform 0.5s ease-in-out',
@@ -58,8 +61,8 @@ const Temoignages = () => {
         {temoignagesData.map((_, index) => (
           <span
             key={index}
-            className={`dot ${index === activeIndex ? 'active' : ''}`}
-            onClick={() => setActiveIndex(index)}
+            className={`dot ${index === activeIndex/2 ? 'active' : ''}`}
+            onClick={() => setActiveIndex(index*2)}
           ></span>
         ))}
       </div>

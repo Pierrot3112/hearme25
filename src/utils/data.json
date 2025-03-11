@@ -103,14 +103,28 @@
       "name": "Sophie Morel",
       "position": "Enseignante",
       "photo": "/user.jpg",
-      "text": "I have been using Clish for a few months now and I have to say that it is the best platform for learning English. The quizzes are fun and engaging and the pronunciation practice has helped me a lot."
+      "text": "2I have been using Clish for a few months now and I have to say that it is the best platform for learning English. The quizzes are fun and engaging and the pronunciation practice has helped me a lot."
     },
     {
       "id": 3,
       "name": "Marie Curie",
       "position": "Étudiante en sciences",
       "photo": "/user.jpg",
-      "text": "I have been using Clish for a few months now and I have to say that it is the best platform for learning English. The quizzes are fun and engaging and the pronunciation practice has helped me a lot."
+      "text": "3I have been using Clish for a few months now and I have to say that it is the best platform for learning English. The quizzes are fun and engaging and the pronunciation practice has helped me a lot."
+    },
+    {
+      "id": 4,
+      "name": "Marie Curie",
+      "position": "Étudiante en sciences",
+      "photo": "/user.jpg",
+      "text": "4I have been using Clish for a few months now and I have to say that it is the best platform for learning English. The quizzes are fun and engaging and the pronunciation practice has helped me a lot."
+    },
+    {
+      "id": 5,
+      "name": "Marie Curie",
+      "position": "Étudiante en sciences",
+      "photo": "/user.jpg",
+      "text": "5I have been using Clish for a few months now and I have to say that it is the best platform for learning English. The quizzes are fun and engaging and the pronunciation practice has helped me a lot."
     }
   ]
 }
