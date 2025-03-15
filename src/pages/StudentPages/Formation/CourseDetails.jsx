@@ -56,16 +56,8 @@ const CourseDetails = ({ formation, onStartFormation }) => {
                 Commencer votre formation
               </button>
               <div className="videos">
-                <video src={Video} style={{ position: "relative" }} />
-                <IconButton
-                  style={{
-                    position: "absolute",
-                    top: "90%",
-                    left: "62.5%",
-                    backgroundColor: "#43A8FF",
-                    color: "white",
-                  }}
-                >
+                <video src={Video} />
+                <IconButton className="play-button">
                   <PlayArrowIcon fontSize="large" />
                 </IconButton>
               </div>
