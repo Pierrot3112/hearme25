@@ -16,18 +16,35 @@ const SidebarAdmin = ({ onMenuClick }) => {
 
   const toggleCourseMenu = () => {
     setExpandCourse(!expandCourse); 
+    handleMenuClick("allCourses")
+    setExpandEvaluation(false); 
+    setExpandCertificat(false);
+    setExpandAbonment(false);
   };
 
   const toggleEvaluationMenu = () => {
     setExpandEvaluation(!expandEvaluation); 
+    handleMenuClick("evaluation");
+    setExpandCourse(false);
+    setExpandCertificat(false);
+    setExpandAbonment(false);
+
   };
 
   const toggleCertificationMenu = () => {
     setExpandCertificat(!expandCertificat);
+    handleMenuClick("allCertificat");
+    setExpandCourse(false);
+    setExpandEvaluation(false);
+    setExpandAbonment(false);
   }
 
   const toggleAbonmentMenu = () => {
     setExpandAbonment(!expandAbonment);
+    handleMenuClick("abonnement");
+    setExpandCourse(false);
+    setExpandEvaluation(false);
+    setExpandCertificat(false);
   }
   return (
     <aside className="sidebarAdmin">
@@ -95,7 +112,7 @@ const SidebarAdmin = ({ onMenuClick }) => {
                   <p>Ajouter Evaluation</p>
                 </div>
                 <div
-                  className={activeMenu === "allEvaluation" ? "active" : ""}
+                  className={activeMenu === "evaluation" ? "active" : ""}
                   onClick={() => handleMenuClick("evaluation")}
                 >
                   <p>Toutes Evaluations</p>
