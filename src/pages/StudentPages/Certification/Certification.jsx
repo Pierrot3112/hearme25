@@ -49,20 +49,65 @@ const Certification = () => {
   return (
     <Box sx={{ padding: 1 }}>
       <Head />
-
       <Box display="flex" alignItems="center" gap={3} sx={{ marginBottom: 4, flexWrap: "wrap" }}>
-        <Box flex={1}>
-          <Typography variant="h4" fontWeight="bold" gutterBottom>
+        <Box flex={1} sx={{ px: { xs: 2, sm: 3, md: 4 }, py: { xs: 3, md: 4 } }}>
+          <Typography 
+            variant="h4" 
+            fontWeight="bold" 
+            gutterBottom
+            sx={{ 
+              fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem' }
+            }}
+          >
             Certifications
           </Typography>
-          <Typography variant="body1" color="text.secondary" paragraph>
+          <Typography 
+            variant="body1" 
+            color="text.secondary" 
+            paragraph
+            sx={{ 
+              mb: { xs: 2, md: 3 },
+              maxWidth: '700px'
+            }}
+          >
             Démarquez-vous des autres et gagnez en crédibilité grâce à la certification Hearme.
           </Typography>
-
-          <Box display="flex" gap={2}>
-            <Button variant="contained" color="primary">Débutant</Button>
-            <Button variant="outlined" color="primary">Intermédiaire</Button>
-            <Button variant="outlined" color="primary">Avancé</Button>
+          <Box 
+            display="flex" 
+            gap={2}
+            sx={{ 
+              flexDirection: { xs: 'column', sm: 'row' },
+              gap: { xs: 1, sm: 2 },
+              width: { xs: '100%', sm: 'auto' }
+            }}
+          >
+            <Button 
+              variant="contained" 
+              color="primary"
+              sx={{ 
+                minWidth: { xs: '100%', sm: '120px' }
+              }}
+            >
+              Débutant
+            </Button>
+            <Button 
+              variant="outlined" 
+              color="primary"
+              sx={{ 
+                minWidth: { xs: '100%', sm: '120px' }
+              }}
+            >
+              Intermédiaire
+            </Button>
+            <Button 
+              variant="outlined" 
+              color="primary"
+              sx={{ 
+                minWidth: { xs: '100%', sm: '120px' }
+              }}
+            >
+              Avancé
+            </Button>
           </Box>
         </Box>
       </Box>
