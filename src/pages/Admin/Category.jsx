@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Img from '../../assets/images/person1.png';
-import data from './data.json';
+import { getCategorie,createCategorie } from '../../api/cours'
 
 const Category = () => {
-  const [categories, setCategories] = useState(data?.category || []);
+  const [categories, setCategories] = useState([]);
   const [categoryName, setCategoryName] = useState('');
   const [categoryDescription, setCategoryDescription] = useState('');
 
@@ -22,20 +22,32 @@ const Category = () => {
   };
 
   // Fonction pour gérer la soumission du formulaire
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     if (!categoryName.trim() || !categoryDescription.trim()) return;
     
-    const newCategory = {
-      id: categories.length + 1, // Génération d'un ID unique
-      nom: categoryName,
-      description: categoryDescription,
-    };
+    const response = await createCategorie({
+        "nom": categoryName,
+        "description": categoryDescription
+    })
     
-    setCategories([...categories, newCategory]);
+    setCategories([...categories, response]);
     setCategoryName('');
     setCategoryDescription('');
   };
+  const fetchCategorie = async () => {
+    try {
+      const response = await getCategorie()
+      setCategories(response)
+    }
+    catch (error) {
+      console.error("error", error);
+    }
+  }
+
+  useEffect(() => {
+    fetchCategorie();
+  }, []);
 
   return (
     <div className="category-container">

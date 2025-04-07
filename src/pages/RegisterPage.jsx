@@ -3,9 +3,12 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import image from "/fond.jfif";
 import "../style/register.scss";
+import { registerUsers } from "../Auth/services/userService";
 
 const RegisterPage = () => {
   const [username, setUsername] = useState(""); // Nom d'utilisateur
+  const [nom, setNom] = useState("");
+  const [prenom, setPrenom] = useState("");
   const [email, setEmail] = useState(""); // Email
   const [password, setPassword] = useState(""); // Mot de passe
   const [confirmPassword, setConfirmPassword] = useState(""); // Confirmation mot de passe
@@ -19,6 +22,10 @@ const RegisterPage = () => {
       newErrors.username = "Le nom d'utilisateur est obligatoire";
     } else if (!email.trim()) {
       newErrors.email = "L'email est obligatoire";
+    }else if (!nom.trim()) {
+      newErrors.nom = "Le nom est obligatoire";
+    }else if (!prenom.trim()) {
+      newErrors.prenom = "Le prenom est obligatoire";
     } else if (!password.trim()) {
       newErrors.password = "Le mot de passe est obligatoire";
     } else if (!confirmPassword.trim()) {
@@ -28,7 +35,26 @@ const RegisterPage = () => {
     }
     return newErrors;
   };
-
+  const register = async (data) => {
+    try {
+      const response = await registerUsers(data);
+      if (response) {
+        navigate("/login");
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        const serverErrors = error.response.data;
+        const newErrors = {};
+        for (const key in serverErrors) {
+          if (Object.hasOwn(serverErrors, key)) {
+            newErrors[key] = serverErrors[key];
+          }
+        }
+        setErrors(newErrors);
+      }
+      console.error("Erreur lors de la récupération des utilisateurs :", error);
+    }
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
     const validationErrors = validateFields();
@@ -38,23 +64,16 @@ const RegisterPage = () => {
       return;
     }
 
-    setErrors({}); // Réinitialise les erreurs
-
-    const urlAPi = process.env.REACT_APP_API_URL || "http://localhost:8080";
-
-    try {
-      const response = await axios.post(`${urlAPi}/api/auth/signup`, {
-        username,
-        email,
-        password,
-      });
-
-      if (response.status === 200 || response.status === 201) {
-        navigate("/login");
-      }
-    } catch (error) {
-      console.error("Erreur d'inscription :", error);
-    }
+    setErrors({});
+    register({
+      "username":username,
+      "email":email,
+      "password":password,
+      "first_name":nom,
+      "last_name":prenom
+    })
+    
+    
   };
 
   return (
@@ -98,6 +117,26 @@ const RegisterPage = () => {
               onChange={(e) => setUsername(e.target.value)}
             />
             {errors.username && <span className="error-message">{errors.username}</span>}
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="Entrez votre nom"
+              className={`form-control ${errors.nom ? "error-border" : ""}`}
+              value={nom}
+              onChange={(e) => setNom(e.target.value)}
+            />
+            {errors.first_name && <span className="error-message">{errors.first_name}</span>}
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="Entrez votre prenom "
+              className={`form-control ${errors.prenom ? "error-border" : ""}`}
+              value={prenom}
+              onChange={(e) => setPrenom(e.target.value)}
+            />
+            {errors.last_name && <span className="error-message">{errors.last_name}</span>}
           </div>
 
           {/* Email */}

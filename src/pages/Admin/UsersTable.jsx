@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import data from "./data.json";
 import ExportToExcel from "./util/ExportToExcel";
+import { getUsers,deleteUsers } from "../../Auth/services/userService";
 
 const UsersTable = () => {
-  const users = data?.users || [];
+  const [users,setUser] = useState([]);
   const itemsPerPage = 10; // Nombre d'éléments par page
   const [currentPage, setCurrentPage] = useState(1);
   const [pageRange, setPageRange] = useState([1, 2, 3]);
@@ -45,7 +46,31 @@ const UsersTable = () => {
     const endPage = Math.min(startPage + 2, totalPages);
     setPageRange([startPage, startPage + 1, startPage + 2].filter(page => page <= totalPages));
   };
+  const fetchUsers = async () => {
+    try {
+      const response = await getUsers();
+      if (response) {
 
+        setUser(response);
+      }
+    } catch (error) {
+      console.error("Erreur lors de la récupération des utilisateurs :", error);
+    }
+  };
+  const handleDelete = async (id) => {
+    try {
+      await deleteUsers(id)
+      const updatedUsers = users.filter(user => user.id !== id);
+      setUser(updatedUsers);
+    }
+    catch (error) {
+      console.error("Erreur lors de la suppression de l'utilisateur :", error);
+    }
+  }
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
   // Affichage des pages dans la pagination (3 pages max à la fois)
   const renderPageButtons = () => {
     return (
@@ -100,25 +125,26 @@ const UsersTable = () => {
               onMouseLeave={() => setHoveredRow(null)}
             >
               <td>{user.id}</td>
-              <td className="blue-text">{user.name}</td>
-              <td className="dark-gray-text">{user.date}</td>
-              <td className="dark-gray-text">{user.points}</td>
-              <td className="blue-text">{user.level}</td>
-
-              {/* Boîte d'actions visible uniquement lorsqu'une ligne est survolée */}
-              {hoveredRow === user.id && (
-                <div className="action-buttons">
-                  <button className="edit">✏️</button>
-                  <button className="delete">🗑️</button>
-                  <button className="link">🔗</button>
-                </div>
-              )}
+              <td className="blue-text">{user.first_name} {user.last_name}</td>
+              <td className="dark-gray-text">
+                {new Intl.DateTimeFormat("fr-FR", {year: "numeric",month: "long",day: "numeric"}).format(new Date(user.date_joined))}
+              </td>
+              <td className="dark-gray-text">{user.point}</td>
+              <td className="blue-text">{user.nom_niveau}</td>
+              <td>
+                {/* Boîte d'actions visible uniquement lorsqu'une ligne est survolée */}
+                {hoveredRow === user.id && (
+                  <div className="action-buttons">
+                    <button className="delete" onClick={() => handleDelete(user.id)}>🗑️</button>
+                    <button className="link" onClick={() => handleLink(user.id)}>🔗</button>
+                  </div>
+                )}
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
 
-        
       {/* Contrôles de pagination */}
       {totalPages > 1 && renderPageButtons()}
 
