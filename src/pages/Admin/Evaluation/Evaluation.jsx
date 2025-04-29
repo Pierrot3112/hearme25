@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import data from '../data.json';
+import React, { useEffect, useState } from 'react';
 import ExportToExcel from '../util/ExportToExcel';
+import axiosInstance from '../../../Auth/services/axiosInstance';
+
 
 const Evaluation = () => {
-    const evaluations = data?.evaluations || [];
+    const [evaluations,setEvaluations] = useState([]);
     const itemsPerPage = 10; // Nombre d'éléments par page
     const [currentPage, setCurrentPage] = useState(1);
     const [pageRange, setPageRange] = useState([1, 2, 3]);
@@ -45,6 +46,18 @@ const Evaluation = () => {
         const endPage = Math.min(startPage + 2, totalPages);
         setPageRange([startPage, startPage + 1, startPage + 2].filter(page => page <= totalPages));
     };
+    const getAllEvaluation = async ()=>{
+      try {
+        const response = await axiosInstance.get('/evaluations/')
+        setEvaluations(response.data)
+      }
+      catch (error) {
+        console.error("error", error);
+      }
+    }
+    useEffect(()=>{
+      getAllEvaluation()
+    },[])
 
     // Affichage des pages dans la pagination (3 pages max à la fois)
     const renderPageButtons = () => {
@@ -83,10 +96,9 @@ const Evaluation = () => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Nom Complet</th>
-              <th>Date</th>
-              <th>Points</th>
-              <th>Niveau</th>
+              <th>titre</th>
+              <th>auteur</th>
+              <th>nom du formation</th>
             </tr>
           </thead>
           <tbody>
@@ -100,10 +112,9 @@ const Evaluation = () => {
                 onMouseLeave={() => setHoveredRow(null)}
               >
                 <td>{evaluation.id}</td>
-                <td className="blue-text">{evaluation.title}</td>
-                <td className="dark-gray-text">{evaluation.date}</td>
-                <td className="dark-gray-text">{evaluation.tryer}</td>
-                <td className="blue-text">{evaluation.author}</td>
+                <td className="blue-text">{evaluation.titre}</td>
+                <td className="dark-gray-text">{evaluation.auteur}</td>
+                <td className="dark-gray-text">{evaluation.nom_formation}</td>
   
                 {/* Boîte d'actions visible uniquement lorsqu'une ligne est survolée */}
                 {hoveredRow === evaluation.id && (

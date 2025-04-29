@@ -12,8 +12,8 @@ const AjouterFormation = () => {
     moduleCount: '',
     level: '',
   });
-  const [uploadProgress, setUploadProgress] = useState(0); // État pour la progression
-  const [uploadSpeed, setUploadSpeed] = useState(0); // État pour le débit d'envoi
+  const [uploadProgress, setUploadProgress] = useState(0); 
+  const [uploadSpeed, setUploadSpeed] = useState(0);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -21,7 +21,6 @@ const AjouterFormation = () => {
   };
 
   const handleFormSubmit = async () => {
-    console.log('Formation ajoutée');
     const formData = new FormData();
     formData.append('nom', formValues.name);
     formData.append('description', formValues.description);
@@ -47,7 +46,14 @@ const AjouterFormation = () => {
           setUploadSpeed(speed);
         },
       });
-      console.log('Formation ajoutée avec succès:', response.data);
+      setFormValues({
+        name: '',
+        author: '',
+        description: '',
+        moduleCount: '',
+        level: '',
+      })
+      setVideo([])
     } catch (error) {
       console.error('Erreur lors de l\'ajout de la formation:', error);
     }

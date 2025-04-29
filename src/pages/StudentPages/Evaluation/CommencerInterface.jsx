@@ -7,7 +7,7 @@ import CounterChargement from "./CounterChargement"; // Importer le composant Co
 import EvaluationStart from "./EvaluationStart"; // Importer le nouveau composant NextInterface
 import logo from "../../../assets/images/lgl.png";
 
-const CommencerInterface = ({ evaluation }) => {
+const CommencerInterface = ({ evaluation,quiz }) => {
   const [currentStep, setCurrentStep] = useState("start"); // État pour gérer les étapes
 
   const handleStartClick = () => {
@@ -46,7 +46,7 @@ const CommencerInterface = ({ evaluation }) => {
             </p>
             <div className="q-d">
               <p>
-                <ContentCopyIcon style={{ fontSize: "16px" }} /> 25 questions.
+                <ContentCopyIcon style={{ fontSize: "16px" }} /> {evaluation.nb_quizz} questions.
               </p>
               <p>
                 <AccessTimeIcon style={{ fontSize: "16px" }} /> 25 minutes
@@ -64,7 +64,7 @@ const CommencerInterface = ({ evaluation }) => {
    {currentStep === "countdown" && (
         <CounterChargement onFinish={handleCountdownFinish} />
       )}
-      {currentStep === "nextInterface" && <EvaluationStart evaluation={evaluation} />}
+      {currentStep === "nextInterface" && <EvaluationStart evaluation={evaluation} quiz={quiz} onFinish={()=>console.log("ok ok")} />}
     </div>
   );
 };

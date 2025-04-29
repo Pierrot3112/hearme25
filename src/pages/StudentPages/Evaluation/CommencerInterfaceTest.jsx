@@ -4,31 +4,29 @@ import CommencerInterface from './CommencerInterface';
 import { Agriculture, Campaign, Brush, Devices } from "@mui/icons-material"; // Updated icon for Marketing
 import { useNavigate, useParams } from "react-router-dom";
 import '../UserStyle/d.scss';
+import { evaluationDetail,evaluationGetQuizz } from '../../../api/evaluation';
 
 
-const evaluations = [
-    {
-      id: 1,
-      title: "Agri-business",
-      description:
-        "Ce cours est dédié aux passionnés et débutants dans le domaine de l’agri-business. Avec des modules de formations complètes.",
-      status: "Gratuit",
-      icon: <Agriculture /> // Agri-business icon
-    }
-  ];
-  
 const CommencerInterfaceTest = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [showTestContent, setShowTestContent] = useState(false);
     const [evaluation,setEvaluation] = useState(null);
+    const [quiz,setQuiz] = useState([])
     const { id } = useParams();
     const navigate = useNavigate();
     const handleCloseModal = () => {
       navigate(`/user/evaluation`);
     }
+    const getQuiz = async ()=>{
+      const response = await evaluationDetail(id)
+      const responseQuiz = await evaluationGetQuizz(id)
+      setQuiz(responseQuiz)
+      setEvaluation(response)
+    }
     useEffect(()=>{
-      setEvaluation(evaluations[0])
       setIsLoading(true);
+      getQuiz()
+
 
       setTimeout(() => {
           setIsLoading(false); 
@@ -37,14 +35,14 @@ const CommencerInterfaceTest = () => {
     },[]);
 
     return (
-      <div className="modal">
+      <div className="modal" >
         <div className="modal-content">
         
           {isLoading ? (
               <ChargementEvDemar />
           ) : (
               showTestContent && (
-              <CommencerInterface evaluation={evaluation} />
+              <CommencerInterface evaluation={evaluation} quiz={quiz} />
               )
           )}
           {!isLoading && (

@@ -6,9 +6,7 @@ import CircularProgressBar from "./CircularProgressBar";
 import data from "../data.json";
 import ProgressBar from "./ProgessBar";
 
-const EvaluationStart = ({ evaluation, onFinish }) => {
-  const questions = data.questions;
-
+const EvaluationStart = ({ evaluation,quiz,onFinish }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [score, setScore] = useState(0);
@@ -31,7 +29,7 @@ const EvaluationStart = ({ evaluation, onFinish }) => {
   }, []);
 
   useEffect(() => {
-    setProgress(((currentQuestionIndex + 1) / questions.length) * 100);
+    setProgress(((currentQuestionIndex + 1) / quiz.length) * 100);
   }, [currentQuestionIndex]);
 
   const handleQuizFinish = () => {
@@ -46,10 +44,10 @@ const EvaluationStart = ({ evaluation, onFinish }) => {
   const handleOptionClick = (option) => setSelectedOption(option);
 
   const handleNext = () => {
-    if (selectedOption === questions[currentQuestionIndex].answer) {
+    if (selectedOption === quiz[currentQuestionIndex].correct) {
       setScore(score + 1);
     }
-    if (currentQuestionIndex < questions.length - 1) {
+    if (currentQuestionIndex < quiz.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setSelectedOption(null);
     } else {
@@ -74,16 +72,16 @@ const EvaluationStart = ({ evaluation, onFinish }) => {
       <ToastContainer />
       {!finished ? (
         <>
-          <ProgressBar progress={progress} completed={currentQuestionIndex + 1} total={questions.length} />
+          <ProgressBar progress={progress} completed={currentQuestionIndex + 1} total={quiz.length} />
           <div className="question-container">
-            <h2>Question {currentQuestionIndex + 1} sur {questions.length}</h2>
-            <p>{questions[currentQuestionIndex].question}</p>
+            <h2>Question {currentQuestionIndex + 1} sur {quiz.length}</h2>
+            <p>{quiz[currentQuestionIndex].question}</p>
             <div className="options-container">
-              {questions[currentQuestionIndex].options.map((option, index) => (
+              {JSON.parse(quiz[currentQuestionIndex].reponse.replaceAll("'",'"')).map((option, index) => (
                 <button
                   key={index}
-                  className={`option-button ${selectedOption === option ? "selected" : ""}`}
-                  onClick={() => handleOptionClick(option)}
+                  className={`option-button ${selectedOption === index ? "selected" : ""}`}
+                  onClick={() => handleOptionClick(index)}
                 >
                   {option}
                 </button>
@@ -96,9 +94,9 @@ const EvaluationStart = ({ evaluation, onFinish }) => {
               <button
                 className="next-button"
                 onClick={handleNext}
-                disabled={!selectedOption}
+                disabled={selectedOption==null}
               >
-                {currentQuestionIndex === questions.length - 1 ? "Valider tous les tests" : "Suivant"}
+                {currentQuestionIndex === quiz.length - 1 ? "Valider tous les tests" : "Suivant"}
               </button>
             </div>
             <div className="timer-container">
@@ -108,7 +106,7 @@ const EvaluationStart = ({ evaluation, onFinish }) => {
           </div>
         </>
       ) : (
-        <ResultReport score={score} totalQuestions={questions.length} evaluation={evaluation} />
+        <ResultReport score={score} totalQuestions={quiz.length} evaluation={evaluation} />
       )}
     </div>
   );

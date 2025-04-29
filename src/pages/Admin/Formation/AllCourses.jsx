@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import data from "../data.json";
-import ExportToExcel from "../util/ExportToExcel"; // Import du composant
+import ExportToExcel from "../util/ExportToExcel"; 
 import '../Admin.scss';
+import {getAllFormtion} from "../../../api/formation";
 
 const AllCourses = () => {
-  const courses = data?.courses || [];
+  const [courses, setCourses] = useState([]);
   const itemsPerPage = 10; // Nombre d'éléments par page
   const [currentPage, setCurrentPage] = useState(1);
   const [pageRange, setPageRange] = useState([1, 2, 3]);
   const [hoveredRow, setHoveredRow] = useState(null);
+
+  
 
   // Calculer les données affichées pour la page actuelle
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -49,6 +52,21 @@ const AllCourses = () => {
       )
     );
   };
+
+  const fetchformation = async () => {
+      try {
+        const response = await getAllFormtion()
+        console.log(response)
+        setCourses(response)
+      }
+      catch (error) {
+        console.error("error", error);
+      }
+    }
+
+  useEffect(()=>{
+    fetchformation()
+  }, []);
 
   // Affichage des pages dans la pagination (3 pages max à la fois)
   const renderPageButtons = () => {
@@ -104,9 +122,10 @@ const AllCourses = () => {
               onMouseLeave={() => setHoveredRow(null)}
             >
               <td>{course.id}</td>
-              <td className="blue-text">{course.name}</td>
-              <td className="dark-gray-text">{course.date}</td>
-              <td className="dark-gray-text">{course.views}</td>
+              <td className="blue-text">{course.nom}</td>
+              <td className="dark-gray-text">{course.date_creation}</td>
+              <td className="dark-gray-text">{course.nb_utilisateur}</td>
+              <td className="dark-gray-text">{course.auteur}</td>
               <td className="blue-text">
                 {course.author}
                 {hoveredRow === course.id && (

@@ -831,13 +831,13 @@ $progress-color: #f9a825;
   }
 
 
-  .modal {
+  .modal{
     position: fixed;
     top: -5px;
     left: 0;
     height: 105vh;
     width: 100vw;
-    display: flex; 
+    display: flex !important; 
     justify-content: center;
     align-items: center;
     z-index: 1000; 
@@ -1214,7 +1214,7 @@ $progress-color: #f9a825;
   left: 0;
   height: 105vh;
   width: 100vw;
-  display: flex; 
+  display: flex !important; 
   justify-content: center;
   align-items: center;
   z-index: 1000; 

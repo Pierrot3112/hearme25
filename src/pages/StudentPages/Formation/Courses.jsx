@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import CourseCard from "./CourseCard";
 import CourseDetails from "./CourseDetails";
 import Head from "../UserComponents/Head";
+import axiosInstance from '../../../Auth/services/axiosInstance';
+
 
 const Courses = () => {
+  const [formations,setFormations] = useState([])
   const [selectedFormation, setSelectedFormation] = useState(null);
   const [showIntro, setShowIntro] = useState(true); // Ajout pour masquer l'introduction
 
@@ -15,6 +18,17 @@ const Courses = () => {
   const handleStartFormation = () => {
     setShowIntro(false); // Masquer l'introduction et la liste des formations
   };
+  const getAllFormations = async () =>{
+    try{
+      const response = await axiosInstance.get("/courses/formation/")
+      setFormations(response.data)
+    }catch(error){
+      console.error(error)
+    }
+  }
+  useEffect(()=>{
+    getAllFormations()
+  },[])
 
   return (
     <section>
@@ -44,7 +58,7 @@ const Courses = () => {
             onStartFormation={handleStartFormation} // Passe la fonction
           />
         ) : (
-          <CourseCard onCardClick={handleCardClick} />
+          <CourseCard onCardClick={handleCardClick} formations={formations}/>
         )}
       </article>
     </section>

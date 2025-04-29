@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const CounterChargement = ({ onFinish }) => {
+const CounterChargement = ({ onFinish=()=>{} }) => {
   const [count, setCount] = useState(4);
   const [progress, setProgress] = useState(0);
 
@@ -12,7 +12,7 @@ const CounterChargement = ({ onFinish }) => {
           return prev - 1; // Réduit le compteur
         } else {
           clearInterval(interval); // Arrêter l'intervalle quand le compteur atteint 0
-          if (onFinish) onFinish(); // Appeler la fonction de fin si définie
+          onFinish(); // Appeler la fonction de fin si définie
           return 0;
         }
       });

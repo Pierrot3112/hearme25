@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Typography, Button, IconButton } from "@mui/material";
 import { HeartBroken } from "@mui/icons-material";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -9,9 +9,11 @@ import Video from '../../../assets/video/backHomee.mp4';
 
 import FormationSelected from "../UserComponents/FormationSelected";
 import './course.scss';
+import axiosInstance from "../../../Auth/services/axiosInstance";
 
 const CourseDetails = ({ formation, onStartFormation }) => {
   const [showFormationSelected, setShowFormationSelected] = useState(false);
+  const [formationDetail,setFormationDetail] = useState(null)
 
   const handleStartFormation = () => {
     setShowFormationSelected(true);
@@ -19,18 +21,25 @@ const CourseDetails = ({ formation, onStartFormation }) => {
       onStartFormation(); 
     }
   };
-
+  const getInfoFormation = async () => {
+    const response = await axiosInstance.get(`/courses/formation/${formation.id}/`)
+    console.log(response.data)
+    setFormationDetail(response.data)
+  }
+  useEffect(()=>{
+    getInfoFormation()
+  },[])
   return (
     <Box className="course" sx={{ padding: 1 }}>
       {showFormationSelected ? (
-        <FormationSelected formation={formation} />
+        <FormationSelected formation={formationDetail} />
       ) : (
         <>
           <div className="courses">
             <div className="left">
-              <img src={formation.image || Img} alt={formation.title} className="image-representation" />
+              <img src={formation.image || Img} alt={formation.nom} className="image-representation" />
               <div className="head-title">
-                <h2>{formation.title}</h2>
+                <h2>{formation.nom}</h2>
                 <span>{formation.statut} {'>>'} </span>
               </div>
               <p>{formation.description}</p>
@@ -48,15 +57,15 @@ const CourseDetails = ({ formation, onStartFormation }) => {
             <div className="right">
               <h2>Sommaire</h2>
               <div className="course-list">
-                <p>Module 1: Initiation à l'agri-business</p>
-                <p>Module 2: L'agri-business et l'IA</p>
-                <p>Module 3: Startup avec l'agribusiness</p>
+                {formationDetail && formationDetail.videos.map((video,index)=>(
+                  <p key={index}>Module {index+1}: {video.titre}</p>
+                ))}
               </div>
               <button className="btn" onClick={handleStartFormation}>
                 Commencer votre formation
               </button>
               <div className="videos">
-                <video src={Video} />
+                <video src={formationDetail?.videos[0]?.url || Video} />
                 <IconButton className="play-button">
                   <PlayArrowIcon fontSize="large" />
                 </IconButton>

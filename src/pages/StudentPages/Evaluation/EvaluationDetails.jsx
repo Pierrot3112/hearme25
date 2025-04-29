@@ -19,7 +19,7 @@ const EvaluationDetail = ({ evaluation }) => {
             situez par rapport aux autres
           </p>
           <p>
-            Compétence en {evaluation.title} : <span>25 questions, 25 minutes</span>
+            Compétence en {evaluation.title} : <span>{evaluation.nb_quizz} questions, {evaluation.duree|| 10} minutes</span>
           </p>
         </div>
         <div className="icon">{evaluation.icon}</div>
@@ -31,7 +31,7 @@ const EvaluationDetail = ({ evaluation }) => {
 
       <hr />
       <div className="about-ev">
-        <h1>A propos de l'évaluation de {evaluation.title}</h1>
+        <h1>A propos de l'évaluation de {evaluation.titre}</h1>
         <p>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam esse temporibus reiciendis aliquid culpa enim asperiores nesciunt vel autem voluptates, ut iusto sit impedit nihil tempora consequatur cumque, error ex!
         </p>
@@ -42,7 +42,7 @@ const EvaluationDetail = ({ evaluation }) => {
           <li>L'évaluation a une durée limitée.</li>
           <li>N'utilisez pas de moteur de recherche et ne demandez pas d'aide à d'autres personnes.</li>
           <li>Une fois que vous avez soumis une réponse, vous ne pouvez revenir en arrière.</li>
-          <li>Si vous n'êtes pas sûr d'une réponse, il est préférable de répondre "je ne sais pas" plutôt que de répondre au hasard.</li>
+          {/* <li>Si vous n'êtes pas sûr d'une réponse, il est préférable de répondre "je ne sais pas" plutôt que de répondre au hasard.</li> */}
           <li>Vous pouvez quitter le test, mais le minuteur continuera de fonctionner.</li>
           <li>Vous disposez de 2 tentatives par évaluation tous les 30 jours.</li>
         </ul>

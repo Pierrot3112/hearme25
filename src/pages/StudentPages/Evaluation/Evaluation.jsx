@@ -2,41 +2,43 @@ import React, { useState,useEffect } from "react";
 import { Agriculture, Campaign, Brush, Devices } from "@mui/icons-material"; // Updated icon for Marketing
 import EvaluationDetail from "./EvaluationDetails"; // Import the new component
 import Head from "../UserComponents/Head";
+import { getEvaluation } from "../../../api/evaluation";
 
-const evaluations = [
-  {
-    id: 1,
-    title: "Agri-business",
-    description:
-      "Ce cours est dédié aux passionnés et débutants dans le domaine de l’agri-business. Avec des modules de formations complètes.",
-    status: "Gratuit",
-    icon: <Agriculture /> // Agri-business icon
-  },
-  {
-    id: 2,
-    title: "Marketing Digitale",
-    description:
-      "Ce cours est dédié aux passionnés et débutants dans le domaine du marketing digital. Avec des modules de formations complètes.",
-    status: "25 questions",
-    icon: <Campaign /> // Marketing icon (replaced with Campaign)
-  },
-  {
-    id: 3,
-    title: "Art Digital",
-    description:
-      "Ce cours est dédié aux passionnés et débutants dans le domaine de l’art digital. Avec des modules de formations complètes.",
-    icon: <Brush /> // Art Digital icon
-  },
-  {
-    id: 4,
-    title: "Médias & Technologie",
-    description:
-      "Ce cours est dédié aux passionnés et débutants dans le domaine des médias et de la technologie. Avec des modules de formations complètes.",
-    icon: <Devices /> // Media & Tech icon
-  },
-];
+// const evaluations = [
+//   {
+//     id: 1,
+//     title: "Agri-business",
+//     description:
+//       "Ce cours est dédié aux passionnés et débutants dans le domaine de l’agri-business. Avec des modules de formations complètes.",
+//     status: "Gratuit",
+//     icon: <Agriculture /> // Agri-business icon
+//   },
+//   {
+//     id: 2,
+//     title: "Marketing Digitale",
+//     description:
+//       "Ce cours est dédié aux passionnés et débutants dans le domaine du marketing digital. Avec des modules de formations complètes.",
+//     status: "25 questions",
+//     icon: <Campaign /> // Marketing icon (replaced with Campaign)
+//   },
+//   {
+//     id: 3,
+//     title: "Art Digital",
+//     description:
+//       "Ce cours est dédié aux passionnés et débutants dans le domaine de l’art digital. Avec des modules de formations complètes.",
+//     icon: <Brush /> // Art Digital icon
+//   },
+//   {
+//     id: 4,
+//     title: "Médias & Technologie",
+//     description:
+//       "Ce cours est dédié aux passionnés et débutants dans le domaine des médias et de la technologie. Avec des modules de formations complètes.",
+//     icon: <Devices /> // Media & Tech icon
+//   },
+// ];
 
 const Evaluation = () => {
+  const [evaluations,setEvaluations] = useState([]);
   const [selectedEvaluation, setSelectedEvaluation] = useState(null);
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
 
@@ -53,6 +55,13 @@ const Evaluation = () => {
   const handleClick = (evaluation) => {
     setSelectedEvaluation(evaluation);
   };
+  const getAllEvaluation = async () =>{
+    const response = await getEvaluation()
+    setEvaluations(response)
+  }
+  useEffect(()=>{
+    getAllEvaluation()
+  },[])
 
   // Styles responsives
   const styles = {
@@ -174,12 +183,12 @@ const Evaluation = () => {
               }}
             >
               <div style={styles.cardHeader}>
-                {evaluation.icon}
-                <h3 style={styles.cardTitle}>{evaluation.title}</h3>
+                {evaluation?.icon}
+                <h3 style={styles.cardTitle}>{evaluation.titre}</h3>
               </div>
               <p style={styles.cardDescription}>{evaluation.description}</p>
-              {evaluation.status && (
-                <div style={styles.statusBadge}>{evaluation.status}</div>
+              {evaluation?.status && (
+                <div style={styles.statusBadge}>{evaluation?.status}</div>
               )}
             </div>
           ))}

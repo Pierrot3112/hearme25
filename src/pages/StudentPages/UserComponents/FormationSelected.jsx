@@ -1,41 +1,49 @@
-import React from 'react'; 
-import { IconButton } from '@mui/material';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-
-import Video from '../../../assets/video/backHomee.mp4';
+import React, { useState } from 'react'; 
 import '../UserStyle/formation.scss';
 
 const FormationSelected = ({ formation }) => {
+  const [videoIndex, setVideoIndex] = useState(0);
+  const videos = formation.videos;
+
+  const handleNextVideo = () => {
+    if (videoIndex < videos.length - 1) {
+      setVideoIndex(prev => prev + 1);
+    }
+  };
+
   return (
     <div className='cours-selected'>
       <div className="detail-courses">
-        <h1>Formation {'>>'} {formation.title}</h1>
-        <p className='level-modul'>Module 1: Initiation à {formation.title}</p>
+        <h1>Formation {'>>'} {formation.nom}</h1>
+        <p className='level-modul'>Module 1: {videos[videoIndex].titre}</p>
         <div className="content-course">
-          <div className="video">
-            <video src={Video} />
-            <IconButton
-              style={{
-                position: "absolute",
-                top: "50%",
-                left: "32%",
-                backgroundColor: "#43A8FF",
-                color: "white",
-              }}
-            >
-              <PlayArrowIcon fontSize='large' />
-            </IconButton>
+          <div className="video" style={{ position: "relative" }}>
+            <video 
+              src={videos[videoIndex].url} 
+              controls 
+              style={{ width: "100%", borderRadius: "10px",height: "100%" }} 
+            />
           </div>
           <div className="description-cd">
             <div className="teacher">
               <div>
-                <img src={formation.author} alt="teacher" className='teacher-image'/>
+                <img 
+                  src={formation.author} 
+                  alt="teacher" 
+                  className='teacher-image' 
+                />
                 <p>{formation.teacher || "Professeur"}</p>
               </div>
-              <p>1/75</p>
+              <p>{videoIndex + 1}/{videos.length}</p>
             </div>
             <p>{formation.description}</p>
-            <button className="btn">Vidéo suivante</button>
+            <button 
+              className="btn" 
+              onClick={handleNextVideo}
+              disabled={videoIndex === videos.length - 1}
+            >
+              {videoIndex < videos.length - 1 ? "Vidéo suivante" : "Dernière vidéo"}
+            </button>
           </div>
         </div>
       </div>
